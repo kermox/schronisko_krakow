@@ -78,7 +78,7 @@ class Animal(models.Model):
     date_of_adoption = models.DateField(
         verbose_name='Data adopcji',
         blank=True,
-        default='',
+        null=True,
     )
     chip_number = models.PositiveIntegerField(
         blank=True,
@@ -113,6 +113,9 @@ class Animal(models.Model):
         verbose_name='zdjęcie',
     )
 
+    def __str__(self):
+        return f'{self.name} - {self.species} - {self.age} y.o. - #{self.chip_number} '
+
 
 class PetOwner(models.Model):
 
@@ -145,3 +148,6 @@ class PetOwner(models.Model):
         upload_to='agreements/',
         verbose_name='umowa adopcyjna',
     )
+
+    def __str__(self):
+        return f'{self.first_name} {self.second_name} - {self.email} - {self.animal.name}'
