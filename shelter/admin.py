@@ -1,3 +1,14 @@
+from .models import Animal, PetOwner
 from django.contrib import admin
 
-# Register your models here.
+
+class AnimalAdmin(admin.ModelAdmin):
+    pass
+
+
+class PetOwnerAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Animal, AnimalAdmin)
+admin.site.register(PetOwner, PetOwnerAdmin)

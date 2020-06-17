@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Lato', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1170px;
+    padding: 0 15px 0 15px;
+    margin: 0 auto;
+}
+
+nav {
+    position: relative;
+    top: 0px;
+    width: 100vw;
+    height: 120px;
+
+}
+
+div.navigation {
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3)
+}
+
+ul.links {
+    display: flex;
+
+}
+
+ul.links li {
+    display: block;
+    margin-right: 40px;
+    font-size: 18px;
+    color: black;
+}
+
+ul.links li:last-child {
+    margin-right: 0px;
+
+}
+
+ul.links li a {
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+div.main {
+    position: absolute;
+    z-index: -100;
+    top: 0px;
+    width: 100vw;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../img/Krakowskie\ Schronisko\ dla\ Bezdomnych\ Zwierząt.jpg');
+}
