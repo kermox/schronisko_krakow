@@ -40,7 +40,9 @@ div.navigation {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.3)
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 1px rgba(0, 0, 0, 0.5);
+
 }
 
 ul.links {
