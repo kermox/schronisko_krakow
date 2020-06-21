@@ -1,4 +1,7 @@
 {% extends 'index.html' %}
     {% block content %} 
+    {% for i in object_list %}
+    <p>{{i.title}}</p>
+    <h3>{{i.content}}</h3>
     {% endfor %}
 {% endblock %}
