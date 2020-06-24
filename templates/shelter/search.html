@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% for i in animal %}
+{{i.name}}
+{% endfor %}
+<p>{{ data }}</p>
+{% endblock %}
