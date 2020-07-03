@@ -1,6 +1,7 @@
 from django.db import models
-from schronisko_krakow.utils import random_string_generator, unique_slug_generator
+from schronisko_krakow.utils import unique_slug_generator
 from django.db.models.signals import pre_save
+
 
 STATUS_CHOICES = (
     ('draft', 'Szkic'),
@@ -25,6 +26,7 @@ class Post(models.Model):
         help_text='',
     )
     slug = models.SlugField(
+        max_length=250,
         blank=True,
         null=True,
     )
@@ -39,6 +41,10 @@ class Post(models.Model):
         help_text='status publikacji',
         choices=STATUS_CHOICES,
         default='draft',
+    )
+    facebook_id = models.CharField(
+        max_length=250,
+        default=0,
     )
 
     def __str__(self):

@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Post
+from news.models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
-    pass
+    change_list_template = 'admin/news/change_list.html'
 
 
 admin.site.register(Post, PostAdmin)

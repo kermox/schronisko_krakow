@@ -108,8 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
+USER_ACCESS_TOKEN = 'EAACxy7HwWgsBAJ4GWgbOpOgH1rFHUPGYd9dBZBoEZA2XIilowvK7aTeNZA0J0FZBVRpPNommLnuL0mIs1ZArfuNy1XZAUnPOGTaDGn3kfjbMgAA5jrhZBE0Mh6Q3twZC6oq6jk4yBuY3w75Ly4d5DRaP42ct2jJmMsK6JgneI3VvJPXZCFOlhJOod'
+PAGE_ID = '103393781435515'
+# Internationalizatio
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
