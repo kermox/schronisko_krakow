@@ -1,8 +1,11 @@
-from django.views import View
-from django.views.generic import ListView, DetailView, RedirectView
-from django.shortcuts import redirect
+from io import BytesIO
 
 import requests
+from PIL import Image
+from django.core.files import File
+from django.shortcuts import redirect
+from django.views import View
+from django.views.generic import ListView, DetailView
 
 from schronisko_krakow.settings import USER_ACCESS_TOKEN, PAGE_ID
 from .models import Post
@@ -29,14 +32,23 @@ class FacebookPostsUpdate(View):
         local_id_base = [i.facebook_id for i in Post.objects.all()]
         facebook_id_base = [data_json['data'][i]['id']
                             for i in range(0, len(data_json['data']))]
+
         for i in range(0, len(data_json['data'])):
+
             if data_json['data'][i]['id'] not in local_id_base:
                 facebook_post = Post(
-                    title=data_json['data'][i]['message'][0:10],
+                    title=f"Facebook post: {data_json['data'][i]['message'][0:25]}'",
                     content=data_json['data'][i]['message'],
-                    facebook_id=data_json['data'][i]['id']
+                    facebook_id=data_json['data'][i]['id'],
                 )
+
+                if 'picture' in data_json['data'][i].keys():
+                    image = Image.open(requests.get(data_json['data'][i]['picture'], stream=True).raw)
+                    blob = BytesIO()
+                    image.save(blob, 'JPEG')
+                    facebook_post.img.save(f"fb_image_{data_json['data'][i]['id']}.jpg", File(blob), save=False)
                 facebook_post.save()
+
         for i in local_id_base:
             if Post.objects.get(facebook_id=i).facebook_id not in facebook_id_base:
                 Post.objects.filter(facebook_id=i).delete()
