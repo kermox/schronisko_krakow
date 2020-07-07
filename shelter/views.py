@@ -16,6 +16,12 @@ class SearchFormView(View):
     form_class = SearchAnimalForm
     template_name = 'shelter/search.html'
 
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(request.GET)
+        return render(request, self.template_name, {
+            'form': form,
+        })
+
     def post(self, request, *arg, **kwargs):
         form = self.form_class(request.POST)
         data = request.POST.copy()
@@ -27,5 +33,4 @@ class SearchFormView(View):
         return render(request, self.template_name, {
             'animal': animal,
             'form': form,
-            'data': q,
         })
