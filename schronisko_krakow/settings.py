@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shelter.apps.ShelterConfig',
     'news.apps.NewsConfig',
-
+    'sass_processor',
+    # 'compressor',
 ]
 
 MIDDLEWARE = [
@@ -107,9 +108,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+# variables for work with Facebook Graph API
 USER_ACCESS_TOKEN = 'EAACxy7HwWgsBAJ4GWgbOpOgH1rFHUPGYd9dBZBoEZA2XIilowvK7aTeNZA0J0FZBVRpPNommLnuL0mIs1ZArfuNy1XZAUnPOGTaDGn3kfjbMgAA5jrhZBE0Mh6Q3twZC6oq6jk4yBuY3w75Ly4d5DRaP42ct2jJmMsK6JgneI3VvJPXZCFOlhJOod'
+
 PAGE_ID = '103393781435515'
+
 # Internationalizatio
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -128,10 +131,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+# SCSS
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+# SCSS
+# COMPRESS_PRECOMPILERS = (
+#     ('text/x-scss', 'django_libsass.SassCompiler'),
+# )
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR,'static')
 
 
 MEDIA_URL = '/mediafiles/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
