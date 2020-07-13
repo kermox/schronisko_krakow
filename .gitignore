@@ -3,5 +3,6 @@ notes.txt
 __pycache__/
 migrations/
 *.env
-media/
+mediafiles/
+env/
 
