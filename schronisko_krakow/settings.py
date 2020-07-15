@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shelter.apps.ShelterConfig',
     'news.apps.NewsConfig',
-    'sass_processor',
-    # 'compressor',
 ]
 
 MIDDLEWARE = [
@@ -133,19 +131,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "static_compiled"),
 ]
-# SCSS
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder',
 ]
-# SCSS
-# COMPRESS_PRECOMPILERS = (
-#     ('text/x-scss', 'django_libsass.SassCompiler'),
-# )
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR,'static')
 
 
 MEDIA_URL = '/mediafiles/'

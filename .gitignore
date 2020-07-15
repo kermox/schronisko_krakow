@@ -5,4 +5,5 @@ migrations/
 *.env
 mediafiles/
 env/
-
+node_modules/
+/.idea

@@ -1,9 +1,14 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
+    <div class=" container vw-100 vh-100 news-container"
     {% for i in object_list %}
-    <p>{{i.title}}</p>
-    <h3>{{i.content}}</h3>
+        <p>{{ i.title }}</p>
+        <h3>{{ i.content }}</h3>
         <img src="{{ i.img.url }}" alt="blabla">
     {% endfor %}
-    <div class="fb-like" data-href="https://www.facebook.com/search/top?q=testowe%20schroniscko%20krak%C3%B3w" data-width="" data-layout="button" data-action="like" data-size="large" data-share="true"></div>
+    <div class="fb-like" data-href="https://www.facebook.com/search/top?q=testowe%20schroniscko%20krak%C3%B3w"
+         data-width="" data-layout="button" data-action="like" data-size="large" data-share="true"></div>
+    </div>
+
 {% endblock %}
