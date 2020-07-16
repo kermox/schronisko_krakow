@@ -16,9 +16,11 @@
   "author": "Maksym Garus",
   "license": "ISC",
   "dependencies": {
+    "aos": "^2.3.4",
     "bootstrap": "^4.5.0",
-    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
     "node-sass": "^4.14.1",
+    "popper.js": "^1.16.1",
     "sass-lint": "^1.13.1"
   }
 }

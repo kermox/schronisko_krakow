@@ -1,2 +1,6 @@
-@import 'node_modules/bootstrap/scss/bootstrap';
-@import 'sass/customVariables';
+@import "sass/customVariables";
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "sass/custom";
+@import "navigation";
+@import "welcome";
+@import "footer";

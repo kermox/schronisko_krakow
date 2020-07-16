@@ -1,0 +1,19 @@
+.footer {
+  background-color: $secondary;
+
+  .container {
+    a {
+      i {
+        font-size: 3rem;
+        color: $primary;
+
+        &:hover {
+          color: $hover-background;
+          transition: color 0.3s;
+        }
+      }
+    }
+  }
+
+
+}

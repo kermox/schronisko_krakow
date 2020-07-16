@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shelter.apps.ShelterConfig',
     'news.apps.NewsConfig',
+    'fontawesome_5',
 ]
 
 MIDDLEWARE = [
@@ -132,6 +133,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_compiled"),
+    os.path.join(BASE_DIR, "static_src"),
 ]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',

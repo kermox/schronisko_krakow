@@ -13,5 +13,12 @@ window.addEventListener("scroll", function () {
 //     document.body.classList.toggle("menu-open");
 // })
 
+let openNavigation = $('.navbar-toggler')
+openNavigation.click(function () {
+    $('body').toggleClass("overflow-hidden")
+    $('nav').toggleClass('nav-bg-dark')
+})
+
+
 
 AOS.init();
