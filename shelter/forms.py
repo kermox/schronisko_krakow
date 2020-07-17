@@ -1,4 +1,5 @@
 from django import forms
+from .models import Animal
 
 SPECIES_CHOICES = [
     ('dog', 'Pies'),
@@ -13,26 +14,24 @@ SIZE_CHOICES = [
 ]
 
 
-class SearchAnimalForm(forms.Form):
-    species = forms.ChoiceField(
-        widget=forms.RadioSelect,
-        choices=SPECIES_CHOICES,
-        required=False
-    )
-    size = forms.ChoiceField(
-        widget=forms.Select,
-        choices=SIZE_CHOICES,
-        required=False
-    )
-    identification_number = forms.IntegerField(
-        min_value=0,
-        required=False
-    )
-    chip_number = forms.IntegerField(
-        min_value=0,
-        required=False
-    )
-    name = forms.CharField(
-        max_length=50,
-        required=False
-    )
+class SearchAnimalForm(forms.ModelForm):
+    class Meta:
+        model = Animal
+        fields = ('species', 'size', 'identification_number', 'chip_number', 'name')
+        widgets = {
+            'species': forms.Select(attrs={
+
+            }),
+            'size': forms.Select(attrs={
+
+            }),
+            'identification_number': forms.NumberInput(attrs={
+
+            }),
+            'chip_number': forms.NumberInput(attrs={
+
+            }),
+            'name': forms.TextInput(attrs={
+
+            }),
+        }
