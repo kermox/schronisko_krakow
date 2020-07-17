@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'shelter.apps.ShelterConfig',
-    'news.apps.NewsConfig',
     'fontawesome_5',
+    'news.apps.NewsConfig',
+    'shelter.apps.ShelterConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
