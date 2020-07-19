@@ -1,0 +1,126 @@
+.adoption {
+  header {
+    position: relative;
+    background-color: black;
+    height: 50vh;
+    min-height: 50vh;
+    width: 100%;
+    overflow: hidden;
+
+    video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 0;
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: black;
+      opacity: 0.5;
+      z-index: 1;
+    }
+  }
+
+  .h1-container {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-60%);
+
+    h1 {
+      color: $secondary;
+      background-color: $nav-bg-dark;
+    }
+  }
+
+
+  .container-lg {
+    aside {
+      a {
+        color: black;
+      }
+
+      .search-form-container {
+        background-color: $primary;
+        padding: 50px 50px;
+        border-radius: 10px;
+
+        label {
+          text-transform: uppercase;
+          color: black;
+          background-color: $primary;
+        }
+
+        .md-form {
+          background-color: $primary;
+        }
+
+        input[type="text"], .form-control {
+          outline: none;
+          box-shadow: none !important;
+          border-radius: 0;
+          border-bottom: solid 1px $primary !important;
+          background-color: $primary;
+          margin: 0;
+
+          &:focus {
+            border: none;
+          }
+        }
+
+        input[type="submit"] {
+          color: black;
+          outline: none;
+          box-shadow: none;
+          border-radius: 3px;
+          border: none;
+          background-color: $secondary;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .main-content {
+
+      .card {
+        width: 18rem;
+        border: 0;
+
+        .card-body {
+          height: 16em;
+          overflow: scroll;
+          background-color: $primary;
+        }
+
+        .h-container {
+          .card-title {
+            background-color: $secondary;
+          }
+        }
+
+
+        .btn {
+          &:hover {
+            background-color: $secondary;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+

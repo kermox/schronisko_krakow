@@ -1,0 +1,46 @@
+.news {
+  header {
+    height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .h1-container {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-60%);
+
+    h1 {
+      color: $secondary;
+      background-color: $nav-bg-dark;
+    }
+  }
+
+  .container-lg {
+    aside {
+      a {
+        color: black;
+      }
+    }
+
+    .main-content {
+      max-width: 600px;
+
+      .img-fix {
+        max-width: 600px;
+        max-height: 335px;
+        background-color: #0b2e13;
+        border-radius: 3px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <header class="welcome d-flex flex-column justify-content-center align-items-center"
+        style="background-image: url('{% static 'img/main.png' %}');">
+        <h1 class="display-1">Potrzebuję Cię!</h1>
+        <h5>Jeżeli jesteś w stanie podarować zwierzakom dom - zrób to!</h5>
+    </header>
+    <section class="about-us">
+        <div class="container">
+            <h1 class="display-4 bg-primary text-center mb-5 mt-5">Nasza Historia</h1>
+            <div class="row">
+                <div class="col-sm-6" data-aos="fade-right">
+                    <img class="img-fluid rounded float-right about-us-img" src='{% static "img/about-us.jpg" %}'
+                         alt="Dzięwczynka głaszczy psa">
+                </div>
+                <div class="col-sm-6 py-5 px-5 d-flex align-items-center" data-aos="fade-left">
+                    <p>
+                        Schronisko dla Bezdomnych Zwierząt powstało w 1994 roku. Zostało zbudowane ze środków Gminy
+                        Miasta
+                        Krakowa oraz Krakowskiego Towarzystwa Opieki nad Zwierzętami.
+
+                        Ten szczególny obiekt zabezpiecza zgodnie z Ustawą z dnia 13 września 1996 r. - o utrzymaniu
+                        czystości i porządku w gminach, miejsce pobytu zwierzętom pozostawionym bez dozoru oraz
+                        organizuje
+                        ochronę przed bezdomnymi zwierzętami. Prowadzenie schroniska dla bezdomnych zwierząt jako
+                        zadanie
+                        własne gminy wynika z realizacji zapisu art. 11 ust 1 Ustawy z dnia 21 sierpnia 1997 r. - o
+                        ochronie
+                        zwierząt.
+
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 py-5 px-5 d-flex align-items-center" data-aos="fade-right">
+                    <p>
+                        Od kilku lat prowadzeniem schroniska zajmuje się Krakowskie Towarzystwo Opieki nad Zwierzętami.
+                        Wspólnym wysiłkiem KTOZ i gminy udało się w przeciągu kilku ostatnich lat doprowadzić do
+                        sytuacji w
+                        której krakowskie Schronisko jest uważane za jedną z najlepiej prowadzonych placówek tego typu w
+                        Polsce.
+                    </p>
+                </div>
+                <div class="col-sm-6" data-aos="fade-left">
+                    <img class="img-fluid rounded float-right about-us-img" src='{% static "img/about-us2.jpg" %}'
+                         alt="Dzięwczynka głaszczy psa">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-6" data-aos="fade-right">
+                    <img class="img-fluid rounded float-right about-us-img" src='{% static "img/about-us3.jpg" %}'
+                         alt="Dzięwczynka głaszczy psa">
+                </div>
+                <div class="col-sm-6 py-5 px-5 d-flex align-items-center" data-aos="fade-left">
+                    <p>
+                        Schronisko dla Bezdomnych Zwierząt jest utrzymywane przede wszystkim z pieniędzy przekazywanych
+                        przez
+                        Miasto Kraków. Ponadto wspomagane jest ze środków zgromadzonych przez Krakowskie Towarzystwo
+                        Opieki
+                        nad Zwierzętami w Krakowie oraz hojnych darów mieszkańców Krakowa.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="test"></div>
+    </section>
+
+{% endblock %}

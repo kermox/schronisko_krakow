@@ -1,9 +1,11 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.urls import reverse
+from schronisko_krakow.utils import unique_slug_generator
+from django.db.models.signals import pre_save
 
 
 class Animal(models.Model):
-
     name = models.CharField(
         max_length=50,
         verbose_name='imię',
@@ -13,9 +15,16 @@ class Animal(models.Model):
             MinValueValidator(0, 'Wiek nie może być <= 0'),
             MaxValueValidator(40, 'Wiek nie może być większy od 30')
         ],
-        verbose_name='wiek',
+        verbose_name='przybliżony wiek',
         help_text='Wprowadź przybliżony wiek'
     )
+
+    slug = models.SlugField(
+        max_length=250,
+        blank=True,
+        null=True,
+    )
+
     SPECIES_CHOICES = [
         ('dog', 'Pies'),
         ('cat', 'Kot'),
@@ -75,6 +84,11 @@ class Animal(models.Model):
         default='',
         verbose_name='Miejsce gdzie znaleziono zwierzę',
     )
+    date_of_registration = models.DateField(
+        verbose_name='Data rejestracji',
+        blank=True,
+        null=True,
+    )
     date_of_adoption = models.DateField(
         verbose_name='Data adopcji',
         blank=True,
@@ -82,12 +96,12 @@ class Animal(models.Model):
     )
     chip_number = models.PositiveIntegerField(
         blank=True,
-        default='',
+        null=True,
         verbose_name='numer chip',
     )
     identification_number = models.PositiveIntegerField(
         blank=True,
-        default='',
+        null=True,
         verbose_name='identyfikator',
     )
     medical_information = models.TextField(
@@ -101,10 +115,9 @@ class Animal(models.Model):
         blank=True,
         default='',
     )
-    additional_information = models.CharField(
-        max_length=250,
+    additional_information = models.TextField(
         blank=True,
-        default='',
+        default='Ten piesek/kotek jeszcze nie ma opisu. Jedno wiemy napewno - będzie super szczęśliwy w nowej rodzinie',
         verbose_name='dodatkowe informacje',
 
     )
@@ -114,11 +127,21 @@ class Animal(models.Model):
     )
 
     def __str__(self):
-        return f'{self.name} - {self.species} - {self.age} y.o. - #{self.chip_number} '
+        return f'{self.name} - {self.species} - {self.age} y.o. - #{self.chip_number}'
+
+    def get_absolute_url(self):
+        return reverse('animal-detail', kwargs={"slug": self.slug})
+
+
+def pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+
+pre_save.connect(pre_save_receiver, sender=Animal)
 
 
 class PetOwner(models.Model):
-
     first_name = models.CharField(
         max_length=50,
         verbose_name='imię',
@@ -150,4 +173,4 @@ class PetOwner(models.Model):
     )
 
     def __str__(self):
-        return f'{self.first_name} {self.second_name} - {self.email} - {self.animal.name}'
+        return f'{self.first_name} {self.second_name} - {self.email} - {self.animal}'

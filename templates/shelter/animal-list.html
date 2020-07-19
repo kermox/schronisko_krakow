@@ -1,0 +1,96 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% load fontawesome_5 %}
+{% load static %}
+{% block content %}
+    <section class="adoption">
+        <header>
+            <div class="overlay"></div>
+            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="{% static 'video/Pexels Videos 1481903.mp4' %}" type="video/mp4">
+            </video>
+        </header>
+        <div class="h1-container d-flex justify-content-center w-100">
+            <h1 class="display-1 px-3 py-3">Adopcje</h1>
+        </div>
+        <div class="container-lg">
+            <div class="row mt-5">
+                <aside class="py-5 col-sm-3 px-0">
+                    <div class="search-form-container w-100">
+                        <form action="{% url 'animal-list' %}" method="get" class="search-form">
+                            <div class="md-form form-sm">
+                                <label for="identification_number">Nr identyfikacyjny</label>
+                                {% render_field form.identification_number placeholder="Nr identyfikacyjny" id="identification_number" class='form-control form-control-sm border-0' %}
+                            </div>
+                            <div class="md-form form-sm">
+                                <label for="chip_number">Nr chip</label>
+                                {% render_field form.chip_number placeholder="numer chip" id="chip_number" class='form-control form-control-sm border-0' %}
+                            </div>
+                            <div class="md-form form-sm">
+                                <label for="name">Imię</label>
+                                {% render_field form.name placeholder="imię" id="name" class='form-control form-control-sm border-0' %}
+                            </div>
+
+                            <div class="md-form form-sm">
+                                <label for="id_size">Rozmiar</label>
+                                {% render_field form.size class='form-control form-control-sm border-0' %}
+                            </div>
+                            <div class="md-form form-sm">
+                                <label for="id_species">Gatunek</label>
+                                {% render_field form.species class='form-control form-control-sm border-0' selected=True %}
+                            </div>
+                            <div class="w-100 d-flex justify-content-center mt-3">
+                                <i class="d-flex align-items-center mt-1 mr-1">{% fa5_icon 'search' %}</i>
+                                <input type="submit" value="Szukaj" class="text-uppercase mr-4">
+                            </div>
+                        </form>
+                    </div>
+                </aside>
+                <div class="main-content col-sm-9 py-5">
+                    <div class="row">
+                        {% for i in page_obj %}
+                            <div class="card py-3 px-3 col-6 d-flex align-items-center">
+                                <img class="card-img-top" src="{{ i.photo.url }}" alt="Fotografia zwierzaka">
+                                <div class="card-body">
+                                    <div class="h-container d-flex justify-content-start">
+                                        <h5 class="card-title px-1 py-1">
+                                            {% if i.age > 4 %}
+                                                {{ i.name }} / {{ i.age }} lat
+                                            {% elif i.age == 1 %}
+                                                {{ i.name }} / {{ i.age }} roczek
+                                            {% elif i.age < 5 %}
+                                                {{ i.name }} / {{ i.age }} lata
+                                            {% endif %}
+                                        </h5>
+                                    </div>
+                                    <p class="card-text">{{ i.additional_information }}</p>
+                                </div>
+                                <a href="{% url 'animal-detail' i.slug %}"
+                                   class="btn btn-primary w-50 mt-2">Więcej...</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="brn btn-outline-info mb-4">first</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="brn btn-outline-info mb-4">previous</a>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a href="?page={{ num }}" class="brn btn-info mb-4">{{ num }}</a>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                   <a href="?page={{ num }}" class="brn btn-outline-info mb-4">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="brn btn-outline-info mb-4">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="brn btn-outline-info mb-4">last</a>
+            {% endif %}
+        {% endif %}
+
+
+    </section>
+{% endblock %}

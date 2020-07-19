@@ -7216,3 +7216,116 @@ nav {
     .footer .container a i:hover {
       color: #5a5a5a;
       transition: color 0.3s; }
+
+.news header {
+  height: 50vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.news .h1-container {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-60%); }
+  .news .h1-container h1 {
+    color: #FFA500;
+    background-color: rgba(0, 0, 0, 0.8); }
+
+.news .container-lg aside a {
+  color: black; }
+
+.news .container-lg .main-content {
+  max-width: 600px; }
+  .news .container-lg .main-content .img-fix {
+    max-width: 600px;
+    max-height: 335px;
+    background-color: #0b2e13;
+    border-radius: 3px; }
+    .news .container-lg .main-content .img-fix img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 3px; }
+
+.adoption header {
+  position: relative;
+  background-color: black;
+  height: 50vh;
+  min-height: 50vh;
+  width: 100%;
+  overflow: hidden; }
+  .adoption header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%); }
+  .adoption header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1; }
+
+.adoption .h1-container {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-60%); }
+  .adoption .h1-container h1 {
+    color: #FFA500;
+    background-color: rgba(0, 0, 0, 0.8); }
+
+.adoption .container-lg aside a {
+  color: black; }
+
+.adoption .container-lg aside .search-form-container {
+  background-color: #f8f9f5;
+  padding: 50px 50px;
+  border-radius: 10px; }
+  .adoption .container-lg aside .search-form-container label {
+    text-transform: uppercase;
+    color: black;
+    background-color: #f8f9f5; }
+  .adoption .container-lg aside .search-form-container .md-form {
+    background-color: #f8f9f5; }
+  .adoption .container-lg aside .search-form-container input[type="text"], .adoption .container-lg aside .search-form-container .form-control {
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 0;
+    border-bottom: solid 1px #f8f9f5 !important;
+    background-color: #f8f9f5;
+    margin: 0; }
+    .adoption .container-lg aside .search-form-container input[type="text"]:focus, .adoption .container-lg aside .search-form-container .form-control:focus {
+      border: none; }
+  .adoption .container-lg aside .search-form-container input[type="submit"] {
+    color: black;
+    outline: none;
+    box-shadow: none;
+    border-radius: 3px;
+    border: none;
+    background-color: #FFA500;
+    margin-top: 5px; }
+
+.adoption .container-lg .main-content .card {
+  width: 18rem;
+  border: 0; }
+  .adoption .container-lg .main-content .card .card-body {
+    height: 16em;
+    overflow: scroll;
+    background-color: #f8f9f5; }
+  .adoption .container-lg .main-content .card .h-container .card-title {
+    background-color: #FFA500; }
+  .adoption .container-lg .main-content .card .btn:hover {
+    background-color: #FFA500; }

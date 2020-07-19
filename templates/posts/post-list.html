@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <section class="news">
+        <header class="d-flex align-items-end justify-content-center"
+             style="background-image: url('{% static 'img/aktualnosci.jpg' %}');">
+        </header>
+        <div class="h1-container d-flex w-100 justify-content-center">
+            <h1 class="display-1 mt-0 px-3 py-3">Aktualności</h1>
+        </div>
+        <div class="container-lg">
+            <div class="row mt-5">
+                <aside class="vh-100 py-5 col-sm-3 px-0">
+                    <ul class="list-group list-group-flush pl-0 ">
+                        <li class="list-group-item text-center"><a href="#">link</a></li>
+                        <li class="list-group-item text-center"><a href="#">link</a></li>
+                        <li class="list-group-item text-center"><a href="#">link</a></li>
+                        <li class="list-group-item text-center"><a href="#">link</a></li>
+                        <li class="list-group-item text-center"><a href="#">link</a></li>
+                        <li class="list-group-item text-center"><a href="#">link</a></li>
+                    </ul>
+                </aside>
+                <div class="main-content py-5 ml-lg-5 pl-5 col-sm-9">
+                    {% for i in object_list %}
+                        <div class="img-fix p-0">
+                            <img class="img-fluid" src="{{ i.img.url }}" alt="Card image cap">
+                        </div>
+                        <div class="card-body mb-5">
+
+                            <h4 class="card-title">{{ i.title }}</h4>
+                            <p class="card-text">
+                                {{ i.content }}
+                            </p>
+
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

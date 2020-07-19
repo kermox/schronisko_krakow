@@ -1,36 +1,36 @@
-from django.views import View
-from django.views.generic import TemplateView
-from django.shortcuts import render
 from django.http import QueryDict
+
+from django.views.generic import TemplateView, DetailView
+from django.views.generic.list import ListView
+from django.views.generic.edit import FormMixin
 
 from .forms import SearchAnimalForm
 from .models import Animal
 
 
 class HomePageView(TemplateView):
-    template_name = 'shelter/base.html'
+    template_name = 'shelter/home.html'
 
 
-class SearchFormView(View):
+class AnimalListView(FormMixin, ListView):
     model = Animal
+    template_name = 'shelter/animal-list.html'
     form_class = SearchAnimalForm
-    template_name = 'shelter/search.html'
+    paginate_by = 6
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class(request.GET)
-        return render(request, self.template_name, {
-            'form': form,
-        })
-
-    def post(self, request, *arg, **kwargs):
-        form = self.form_class(request.POST)
-        data = request.POST.copy()
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = self.request.GET.copy()
         q = QueryDict(mutable=True)
         for key, value in data.items():
-            if value != '' and key != 'csrfmiddlewaretoken' and value != '-----':
+            if value != '' and key != 'page':
                 q.update({key: value})
         animal = Animal.objects.filter(**q.dict())
-        return render(request, self.template_name, {
-            'animal': animal,
-            'form': form,
-        })
+        return animal
+
+
+class AnimalDetailView(DetailView):
+    model = Animal
+    template_name = 'shelter/animal-detail.html'
+
+

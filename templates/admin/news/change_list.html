@@ -1,9 +1,0 @@
-{% extends "admin/change_list.html" %}
-{% load i18n static %}
-
-{% block object-tools-items %}
-    {{ block.super }}
-    <li>
-        <a href="{% url 'get-facebook-post' %}" class="btn btn-high btn-success">get facebook posts</a>
-    </li>
-{% endblock %}

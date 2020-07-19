@@ -1,11 +1,11 @@
-from io import BytesIO
-
-import requests
-from PIL import Image
 from django.core.files import File
 from django.shortcuts import redirect
 from django.views import View
 from django.views.generic import ListView, DetailView
+
+from io import BytesIO
+import requests
+from PIL import Image
 
 from schronisko_krakow.settings import USER_ACCESS_TOKEN, PAGE_ID
 from .models import Post
@@ -13,18 +13,18 @@ from .models import Post
 
 class PostListView(ListView):
     queryset = Post.objects.filter(status='published')
-    template_name = 'news/news-list.html'
-    paginate_by = 15
+    template_name = 'posts/post-list.html'
+    paginate_by = 10
 
 
 class PostDetailView(DetailView):
     model = Post
-    template_name = 'news/news-detail.html'
+    template_name = 'posts/post-details.html'
 
 
 class FacebookPostsUpdate(View):
 
-    def get(self, requst):
+    def get(self, request):
         parameters = {'access_token': USER_ACCESS_TOKEN}
         page_url = f'https://graph.facebook.com/{PAGE_ID}/feed?fields=message,updated_time,picture.width(1000).height(1000)'
         data = requests.get(page_url, params=parameters)
