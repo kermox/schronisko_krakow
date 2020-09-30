@@ -1,0 +1,80 @@
+.animal-details {
+  .container {
+    margin-top: 100px;
+
+    h1 {
+      font-family: 'Sriracha', cursive;
+    }
+
+    .description {
+      .card {
+        border: none;
+
+        .card-img {
+          border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+          border: solid 7px #41403E;
+        }
+
+        .card-body {
+          border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+          border: solid 7px #41403E;
+          background-color: #F8F9F5;
+        }
+      }
+
+      .card-footer {
+        border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+        border: solid 7px #41403E;
+        background-color: #F8F9F5;
+        min-height: 80px;
+      }
+
+      p, h5 {
+        font-family: 'Sriracha', cursive;
+      }
+    }
+
+    .galery-wrapper {
+      background-color: #FDA500;
+      background-size: 100px;
+      background-position: left center;
+      background-repeat: repeat;
+      border: solid 2px #41403E;
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      min-height: 100px;
+      h2 {
+        font-family: 'Sriracha', cursive;
+        color: white;
+        font-weight: bold;
+        font-size: 3em;
+      }
+
+      figure {
+        margin: 16px 40px !important;
+
+        .img-fluid {
+          border: 2px solid white;
+          object-fit: cover;
+          height: 100px;
+        }
+      }
+    }
+    .get_adopt_information{
+      width: 100%;
+      background-color: rgba(0,0,0,0.6);
+      h5{
+        color: white;
+      }
+      p {
+        color: white;
+      }
+    }
+  }
+}
+@include media-breakpoint-down(sm) {
+  .animal-details{
+    .container {
+      margin-top: 20px;
+    }
+  }
+}

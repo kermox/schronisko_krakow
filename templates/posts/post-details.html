@@ -1,4 +1,28 @@
 {% extends 'index.html' %}
-    {% block content %}
-    {{object.title}} 
+{% load static %}
+{% load fontawesome_5 %}
+{% block content %}
+    <div class="post-details" style="background-image: url('{% static "img/post-detail-background3.jpg" %}')">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+            <div class="post-container d-flex flex-column align-items-center rounded">
+                {% if post.img %}
+                    <div class="img-container w-100 ">
+                        <img class="img-fluid card-img-top" src="{{ post.img.url }}"
+                             alt="Card image cap">
+                    </div>
+                {% endif %}
+                <div class="card-body">
+
+                    <h4 class="card-title">{{ post.title }}</h4>
+                    <h6 class="card-subtitle small text-muted mb-2">{{ post.date|date:'Y-m-d' }}</h6>
+                    <p class="card-text">
+                        {{ post.content }}
+                    </p>
+                </div>
+            </div>
+            <a href="{% url 'post-list' %}" class="btn btn-outline-secondary mt-2 text-justify">{% fa5_icon 'long-arrow-alt-left' %} cofnij</a>
+        </div>
+    </div>
+    {% block mail %}
     {% endblock %}
+{% endblock %}

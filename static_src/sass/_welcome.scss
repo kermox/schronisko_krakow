@@ -32,3 +32,14 @@
     }
   }
 }
+@include media-breakpoint-down(xs) {
+  .welcome {
+    .display-1 {
+      margin-top: 3rem;
+      font-size: 3rem;
+    }
+    h5 {
+      font-size: $font-size-base;
+    }
+  }
+}

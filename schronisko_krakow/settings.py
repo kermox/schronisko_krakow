@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'yhy^8xmk@8z&e3&vs)hvv9a$2&08!cxymg@3p!*8*b*6^vb@7w'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -41,6 +39,7 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'shelter.apps.ShelterConfig',
     'widget_tweaks',
+    'mails',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'schronisko_krakow.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -89,7 +87,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -109,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 # variables for work with Facebook Graph API
-USER_ACCESS_TOKEN = 'EAACxy7HwWgsBAJ4GWgbOpOgH1rFHUPGYd9dBZBoEZA2XIilowvK7aTeNZA0J0FZBVRpPNommLnuL0mIs1ZArfuNy1XZAUnPOGTaDGn3kfjbMgAA5jrhZBE0Mh6Q3twZC6oq6jk4yBuY3w75Ly4d5DRaP42ct2jJmMsK6JgneI3VvJPXZCFOlhJOod'
+USER_ACCESS_TOKEN = 'EAACxy7HwWgsBANca7gg7H1q3CZAvuGqMhmGDKZCZANHDkVZAm1H2ron9dapZB0Hi8aTHRy1pYXN2I3bGIBhcPOZB7qoebZC3nmPkfvtuwIrahtzYIkUwZAEublqKw36vw1x4lJGsmGo6Bx0anwBpJbzndc09qhI0NN7Vr9evuIWBzUM67KQznk9U'
 
 PAGE_ID = '103393781435515'
 
@@ -126,6 +123,19 @@ USE_L10N = True
 
 USE_TZ = True
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = os.environ.get('EMAIL_LOGIN')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_USE_TLS = True
+
+#CELERY
+
+CELERY_BROKER_URL = 'redis://h:p4173be072d2d73b0a72fc54d371725c6f4c7b75ccbfddcb34537b22bf5e21f50@ec2-54-195-192-235.eu-west-1.compute.amazonaws.com:20229'
+
+accept_content = ['json']
+
+task_serializer = 'json'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -140,7 +150,6 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
-
 
 MEDIA_URL = '/mediafiles/'
 

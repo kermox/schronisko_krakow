@@ -8,13 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
     <link href="{% static 'node_modules/aos/dist/aos.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/micromodal/dist/micromodal.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"/>
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
     <title>Schronisko Krakow</title>
     {% fontawesome_5_static %}
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top p-0" id="navigation">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navigation">
     <div class="container">
         <a class="navbar-brand" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="130"
@@ -35,13 +41,13 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav text-uppercase ml-auto">
-                <li class="nav-item">
+                <li class="nav-item {{ home_page }}">
                     <a class="nav-link" href="{% url 'home' %}"><span class="text-nowrap">Strona główna<span/></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ post_list_page }} {{ post_detail_page }}">
                     <a class="nav-link" href="{% url 'post-list' %}">Aktualności</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown {{ animal_list_page }}{{ animal_detail_page }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
@@ -70,21 +76,23 @@
                 <li class="nav-item">
                     <a class="nav-link mr-sm-2" href="#">Kontakt <span class="sr-only">(current)</span></a>
                 </li>
-
-
             </ul>
+            <div class="collapse-trick-close"></div>
+
         </div>
     </div>
 </nav>
 {% block content %}
 {% endblock %}
-<footer class="footer">
+{% block email %}
+{% endblock %}
+<footer class="footer py-2 mt-5">
     <div class="container mb-0">
         <div class="d-flex align-items-center justify-content-between">
             <div>
                 <p class="small mb-0"><a href="#">Obowiązek Informacyjny</a></p>
             </div>
-            <div class="">
+            <div class="d-flex justify-content-center">
                 <a href="https://www.facebook.com/KTOZschronisko" class="mr-3"><i
                         class="fab fa-facebook-square"></i></a>
                 <a href="https://www.facebook.com/KTOZschronisko"><i class="fab fa-instagram"></i></a>
@@ -92,11 +100,13 @@
         </div>
     </div>
 </footer>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
 
 <script src="{% static 'node_modules/jquery/dist/jquery.js' %}"></script>
 <script src="{% static 'node_modules/popper.js/dist/popper.js' %}"></script>
 <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.js' %}"></script>
 <script src="{% static 'node_modules/aos/dist/aos.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

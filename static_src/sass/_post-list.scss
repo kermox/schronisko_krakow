@@ -1,45 +1,42 @@
 .news {
-  header {
-    height: 50vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  .h1-container {
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    transform: translateY(-60%);
-
-    h1 {
-      color: $secondary;
-      background-color: $nav-bg-dark;
+  aside {
+    a {
+      color: black;
     }
   }
 
-  .container-lg {
-    aside {
-      a {
-        color: black;
-      }
-    }
+  .main-content {
+    .post-container {
 
-    .main-content {
-      max-width: 600px;
-
-      .img-fix {
-        max-width: 600px;
-        max-height: 335px;
-        background-color: #0b2e13;
-        border-radius: 3px;
+      .img-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 3px;
+          width: 80%;
         }
+      }
+
+      .card-body {
+        width: 80%;
+        background-color: $primary;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .news {
+    .main-content {
+      .img-container {
+        img {
+          width: 100%;
+        }
+      }
+
+      .card-body {
+        width: 100%;
       }
     }
   }

@@ -7,18 +7,37 @@ window.addEventListener("scroll", function () {
     }
 })
 
-// let hamburger = document.querySelector(".hamburger");
-// hamburger.addEventListener("click", function () {
-//     hamburger.classList.toggle("open");
-//     document.body.classList.toggle("menu-open");
-// })
-
 let openNavigation = $('.navbar-toggler')
 openNavigation.click(function () {
     $('body').toggleClass("overflow-hidden")
     $('nav').toggleClass('nav-bg-dark')
+    $('.collapse-trick-close').toggleClass('collapse-trick-open')
 })
 
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+})
 
+$(document).ready(function () {
+    $(".dropdown-toggle").dropdown();
+});
 
-AOS.init();
+$(function () {
+    let pathName = document.location.pathname;
+    window.onbeforeunload = function () {
+        let scrollPosition = $(document).scrollTop();
+        sessionStorage.setItem("scrollPosition_" + pathName, scrollPosition.toString());
+    }
+    if (sessionStorage["scrollPosition_" + pathName]) {
+        $(document).scrollTop(sessionStorage.getItem("scrollPosition_" + pathName));
+    }
+});
+// let position= $(window).scrollTop();
+//
+// //some things here
+//
+// $(window).scrollTop(position);
+
+AOS.init({
+    once: true
+});

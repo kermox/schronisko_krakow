@@ -1,4 +1,4 @@
-from schronisko_krakow.utils import unique_slug_generator
+from utils.utils import unique_slug_generator
 from django.db import models
 from django.db.models.signals import pre_save
 
@@ -9,7 +9,15 @@ STATUS_CHOICES = (
 )
 
 
-class Post(models.Model):
+class TimeStampMixin(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+
+    class Meta:
+        abstract = True
+
+
+class Post(TimeStampMixin, models.Model):
 
     title = models.CharField(
         max_length=200,
@@ -42,13 +50,34 @@ class Post(models.Model):
         choices=STATUS_CHOICES,
         default='draft',
     )
-    facebook_id = models.CharField(
-        max_length=250,
-        default=0,
-    )
 
     def __str__(self):
         return f'{self.title}'
+
+
+class FacebookPost(TimeStampMixin, models.Model):
+
+    content = models.TextField(blank=True)
+
+    facebook_post_id = models.CharField(
+        max_length=250,
+        default=0,
+    )
+    facebook_permalink_url = models.CharField(
+        max_length=400,
+        null=True
+    )
+
+    status = models.CharField(
+        max_length=15,
+        verbose_name='status',
+        help_text='status publikacji',
+        choices=STATUS_CHOICES,
+        default='draft',
+    )
+
+    def __str__(self):
+        return f"FacebookPost: {self.facebook_post_id}"
 
 
 def pre_save_receiver(sender, instance, *args, **kwargs):
@@ -57,3 +86,4 @@ def pre_save_receiver(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(pre_save_receiver, sender=Post)
+

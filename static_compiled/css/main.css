@@ -7165,6 +7165,65 @@ a.text-dark:hover, a.text-dark:focus {
   font-family: 'Open Sans', sans-serif;
   box-sizing: border-box; }
 
+header.header-video {
+  position: relative;
+  background-color: black;
+  height: 50vh;
+  min-height: 50vh;
+  width: 100%;
+  overflow: hidden; }
+  header.header-video .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1; }
+
+header.header-img {
+  height: 50vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.header-text {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-60%); }
+  .header-text h1 {
+    color: #FFA500;
+    background-color: rgba(0, 0, 0, 0.8); }
+
+video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%); }
+  video .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1; }
+
+@media (max-width: 575.98px) {
+  .header-text h1 {
+    font-size: 3rem; } }
+
 .nav-bg-dark {
   background-color: rgba(0, 0, 0, 0.8); }
 
@@ -7175,10 +7234,23 @@ nav {
   nav .container .navbar-brand svg {
     transition: height 0.6s; }
   nav .container .navbar-toggler {
-    height: 3rem; }
+    outline: none; }
+  nav .container .navbar-collapse .collapse-trick-close {
+    height: 0;
+    transition: height 0.7s; }
+    nav .container .navbar-collapse .collapse-trick-close.collapse-trick-open {
+      height: 100vh;
+      transition: height 0.7s; }
+  nav .container .navbar-collapse.collapsing {
+    -webkit-transition: height 0.7s;
+    -moz-transition: height 0.7s;
+    -ms-transition: height 0.7s;
+    -o-transition: height 0.7s;
+    transition: height 0.7s; }
   nav.active {
     background-color: rgba(0, 0, 0, 0.8);
-    transition: height 0.6s, background-color 1s; }
+    transition: height 0.6s, background-color 1s;
+    box-shadow: 0 0 10px 0 black; }
     nav.active div .navbar-brand svg {
       height: 80px;
       transition: height 0.6s; }
@@ -7208,6 +7280,13 @@ nav {
   .welcome h5 {
     font-size: 1rem; } }
 
+@media (max-width: 575.98px) {
+  .welcome .display-1 {
+    margin-top: 3rem;
+    font-size: 3rem; }
+  .welcome h5 {
+    font-size: 1rem; } }
+
 .footer {
   background-color: #FFA500; }
   .footer .container a i {
@@ -7217,115 +7296,156 @@ nav {
       color: #5a5a5a;
       transition: color 0.3s; }
 
-.news header {
-  height: 50vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center; }
+.about-us .row {
+  overflow-x: hidden; }
 
-.news .h1-container {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  transform: translateY(-60%); }
-  .news .h1-container h1 {
-    color: #FFA500;
-    background-color: rgba(0, 0, 0, 0.8); }
+@media (max-width: 991.98px) {
+  .about-us .display-4 {
+    font-size: 3rem; } }
 
-.news .container-lg aside a {
+.news aside a {
   color: black; }
 
-.news .container-lg .main-content {
-  max-width: 600px; }
-  .news .container-lg .main-content .img-fix {
-    max-width: 600px;
-    max-height: 335px;
-    background-color: #0b2e13;
-    border-radius: 3px; }
-    .news .container-lg .main-content .img-fix img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 3px; }
+.news .main-content .post-container .img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .news .main-content .post-container .img-container img {
+    width: 80%; }
 
-.adoption header {
-  position: relative;
-  background-color: black;
-  height: 50vh;
-  min-height: 50vh;
-  width: 100%;
-  overflow: hidden; }
-  .adoption header video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: 0;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%); }
-  .adoption header .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: black;
-    opacity: 0.5;
-    z-index: 1; }
+.news .main-content .post-container .card-body {
+  width: 80%;
+  background-color: #f8f9f5; }
 
-.adoption .h1-container {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  transform: translateY(-60%); }
-  .adoption .h1-container h1 {
-    color: #FFA500;
-    background-color: rgba(0, 0, 0, 0.8); }
+@media (max-width: 991.98px) {
+  .news .main-content .img-container img {
+    width: 100%; }
+  .news .main-content .card-body {
+    width: 100%; } }
 
-.adoption .container-lg aside a {
-  color: black; }
+.adoption .container .modal .modal-dialog .modal-body {
+  border-radius: 5px;
+  background-color: #f8f9f5; }
 
-.adoption .container-lg aside .search-form-container {
+.adoption .container .modal .modal-dialog label {
+  text-transform: uppercase;
+  color: black;
+  background-color: #f8f9f5; }
+
+.adoption .container .modal .modal-dialog .md-form {
+  background-color: #f8f9f5; }
+
+.adoption .container .modal .modal-dialog input[type="text"], .adoption .container .modal .modal-dialog .form-control {
+  outline: none;
+  box-shadow: none !important;
+  border-radius: 0;
+  border-bottom: solid 1px #f8f9f5 !important;
   background-color: #f8f9f5;
-  padding: 50px 50px;
-  border-radius: 10px; }
-  .adoption .container-lg aside .search-form-container label {
-    text-transform: uppercase;
-    color: black;
-    background-color: #f8f9f5; }
-  .adoption .container-lg aside .search-form-container .md-form {
-    background-color: #f8f9f5; }
-  .adoption .container-lg aside .search-form-container input[type="text"], .adoption .container-lg aside .search-form-container .form-control {
-    outline: none;
-    box-shadow: none !important;
-    border-radius: 0;
-    border-bottom: solid 1px #f8f9f5 !important;
-    background-color: #f8f9f5;
-    margin: 0; }
-    .adoption .container-lg aside .search-form-container input[type="text"]:focus, .adoption .container-lg aside .search-form-container .form-control:focus {
-      border: none; }
-  .adoption .container-lg aside .search-form-container input[type="submit"] {
-    color: black;
-    outline: none;
-    box-shadow: none;
-    border-radius: 3px;
-    border: none;
-    background-color: #FFA500;
-    margin-top: 5px; }
+  margin: 0; }
+  .adoption .container .modal .modal-dialog input[type="text"]:focus, .adoption .container .modal .modal-dialog .form-control:focus {
+    border: none; }
 
-.adoption .container-lg .main-content .card {
+.adoption .container .modal .modal-dialog input[type="submit"] {
+  color: black;
+  outline: none;
+  box-shadow: none;
+  border-radius: 3px;
+  border: solid 1px #FFA500;
+  background-color: #f8f9f5;
+  margin-top: 5px; }
+  .adoption .container .modal .modal-dialog input[type="submit"]:hover {
+    background-color: #FFA500; }
+
+.adoption .container .main-content .search {
+  width: 50%; }
+
+.adoption .container .main-content .card {
   width: 18rem;
   border: 0; }
-  .adoption .container-lg .main-content .card .card-body {
+  .adoption .container .main-content .card .card-body {
+    position: relative;
     height: 16em;
-    overflow: scroll;
-    background-color: #f8f9f5; }
-  .adoption .container-lg .main-content .card .h-container .card-title {
+    background-color: #f8f9f5;
+    overflow: hidden; }
+    .adoption .container .main-content .card .card-body .card-body-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, white 0%, rgba(255, 255, 255, 0) 33%);
+      z-index: 100; }
+  .adoption .container .main-content .card .h-container .card-title {
     background-color: #FFA500; }
-  .adoption .container-lg .main-content .card .btn:hover {
+  .adoption .container .main-content .card .btn:hover {
     background-color: #FFA500; }
+
+.animal-details .container {
+  margin-top: 100px; }
+  .animal-details .container h1 {
+    font-family: 'Sriracha', cursive; }
+  .animal-details .container .description .card {
+    border: none; }
+    .animal-details .container .description .card .card-img {
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      border: solid 7px #41403E; }
+    .animal-details .container .description .card .card-body {
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      border: solid 7px #41403E;
+      background-color: #F8F9F5; }
+  .animal-details .container .description .card-footer {
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border: solid 7px #41403E;
+    background-color: #F8F9F5;
+    min-height: 80px; }
+  .animal-details .container .description p, .animal-details .container .description h5 {
+    font-family: 'Sriracha', cursive; }
+  .animal-details .container .galery-wrapper {
+    background-color: #FDA500;
+    background-size: 100px;
+    background-position: left center;
+    background-repeat: repeat;
+    border: solid 2px #41403E;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    min-height: 100px; }
+    .animal-details .container .galery-wrapper h2 {
+      font-family: 'Sriracha', cursive;
+      color: white;
+      font-weight: bold;
+      font-size: 3em; }
+    .animal-details .container .galery-wrapper figure {
+      margin: 16px 40px !important; }
+      .animal-details .container .galery-wrapper figure .img-fluid {
+        border: 2px solid white;
+        object-fit: cover;
+        height: 100px; }
+  .animal-details .container .get_adopt_information {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6); }
+    .animal-details .container .get_adopt_information h5 {
+      color: white; }
+    .animal-details .container .get_adopt_information p {
+      color: white; }
+
+@media (max-width: 767.98px) {
+  .animal-details .container {
+    margin-top: 20px; } }
+
+.post-details {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; }
+  .post-details .container {
+    min-height: 100vh; }
+    .post-details .container .post-container {
+      width: 50%;
+      margin: 190px 0 0 0;
+      background-color: white;
+      box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12); }
+    .post-details .container .btn {
+      margin-bottom: 170px; }
+
+@media (max-width: 991.98px) {
+  .post-details .container .post-container {
+    width: 100%; } }

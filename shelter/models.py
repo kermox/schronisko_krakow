@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.urls import reverse
-from schronisko_krakow.utils import unique_slug_generator
+from utils.utils import unique_slug_generator
 from django.db.models.signals import pre_save
 
 
@@ -94,12 +94,14 @@ class Animal(models.Model):
         blank=True,
         null=True,
     )
-    chip_number = models.PositiveIntegerField(
+    chip_number = models.CharField(
+        max_length=20,
         blank=True,
         null=True,
         verbose_name='numer chip',
     )
-    identification_number = models.PositiveIntegerField(
+    identification_number = models.CharField(
+        max_length=20,
         blank=True,
         null=True,
         verbose_name='identyfikator',
@@ -139,6 +141,21 @@ def pre_save_receiver(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(pre_save_receiver, sender=Animal)
+
+
+def get_image_name(instance, filename):
+    return f'animal_photos/{instance.animal.name}/{filename}'
+
+
+class AnimalGallery(models.Model):
+    animal = models.ForeignKey(Animal, related_name='photos', default=None, on_delete=models.CASCADE)
+    photos = models.ImageField(upload_to=get_image_name,
+                               verbose_name='zdjęcia')
+
+
+    class Meta:
+        verbose_name="Galeria zdjęć"
+        verbose_name_plural="Galeria zdjęć"
 
 
 class PetOwner(models.Model):

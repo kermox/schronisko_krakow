@@ -1,1 +1,95 @@
-{{ object }}
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% load fontawesome_5 %}
+{% load static %}
+{% block content %}
+    <section class="animal-details">
+        <header class="header-video mb-5">
+            <div class="overlay"></div>
+            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                {% if animal.species == 'cat' %}
+                    <source src="{% static 'video/cat.mp4' %}" type="video/mp4">
+                {% else %}
+                    <source src="{% static 'video/dog.mp4' %}" type="video/mp4">
+                {% endif %}
+            </video>
+        </header>
+        <div class="header-text d-flex justify-content-center w-100">
+            <h1 class="display-1 px-3 py-3">{{ animal.name }}</h1>
+        </div>
+        <div class="container">
+            <div class="description">
+                <div class="card mb-3 mt-5 w-100">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 d-flex align-items-center">
+                            <img class="card-img img-fluid" src="{{ animal.photo.url }}"
+                                 alt="zdjęcie {{ animal.name }}'a">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Gatunek:
+                                    {% if animal.species and animal.species != 'other' %}
+                                        {{ animal.get_species_display }}
+                                    {% elif animal.species == 'other' %}
+                                        {{ animal.other_species }}
+                                    {% endif %}
+                                </h5>
+                                <h5 class="card-title">Przybliżony wiek: {{ animal.age }}</h5>
+                                <h5 class="card-title">Rasa:
+                                    {% if animal.breed %}
+                                        {{ animal.breed }}
+                                    {% else %}
+                                        nieznana
+                                    {% endif %}
+                                </h5>
+                                <h5 class="card-title">
+                                    Płeć: {{ animal.get_gender_display }}
+                                </h5>
+                                <h5 class="card-title">Wielkość:
+                                    {{ animal.get_size_display }}
+                                </h5>
+                                {% if animal.coat %}
+                                    <h5 class="card-title">Umaszczenie: {{ animal.coat }}</h5>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-100 card-footer mt-1">
+                        <p class="card-text">{{ animal.additional_information }}</p>
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-center">Galeria</h1>
+
+            <div class="galery-wrapper w-100 d-flex justify-content-center align-items-center mb-5"
+                 style="background-image:
+                         url('{% if animal.species == 'dog' %}{% static "img/dog.svg" %}{% elif animal.species == 'cat' %}{% static "img/cat.svg" %}{% endif %}');">
+                {% for animal in animal.photos.all %}
+                    <figure>
+                        <a data-fancybox="gallery" href="{{ animal.photos.url }}">
+                            <img src="{{ animal.photos.url }}"
+                                 class="img-fluid rounded"></a>
+                    </figure>
+                {% endfor %}
+                {% if not animal.photos.all %}
+                    <h2>pusto.. </h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    {{ flash_message }}
+{% endblock %}
+{% block email %}
+    {% if flash_message %}
+        CONGRATUFUCKINGLATIONS!
+    {% endif %}
+    <div class="get_adopt_information nav-bg-dark py-3 px-3 d-flex flex-column justify-content-center align-items-center rounded">
+        <h5>Chcesz dowiedzieć się więcej o tym w jaki sposób zaadaptować wybranego zwierzaka?</h5>
+        <p>Podaj swój email, a wyślemy Ci wszystkie niezbędne informacje</p>
+        <form method="POST">
+            {% csrf_token %}
+            {% render_field form.email_address name="email" %}
+            <input type="submit" class="btn btn-secondary">
+        </form>
+    </div>
+{% endblock %}

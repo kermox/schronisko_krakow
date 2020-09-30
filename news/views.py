@@ -1,56 +1,38 @@
-from django.core.files import File
+import operator
+from itertools import chain
+
 from django.shortcuts import redirect
-from django.views import View
+from django.urls import reverse
 from django.views.generic import ListView, DetailView
 
-from io import BytesIO
-import requests
-from PIL import Image
-
-from schronisko_krakow.settings import USER_ACCESS_TOKEN, PAGE_ID
-from .models import Post
+from .models import Post, FacebookPost
 
 
 class PostListView(ListView):
-    queryset = Post.objects.filter(status='published')
+    model = Post
     template_name = 'posts/post-list.html'
     paginate_by = 10
+    extra_context = {
+        'post_list_page': 'active'
+    }
+
+    def get_queryset(self):
+        sorted_combined_list = sorted(chain(Post.objects.filter(status='published'), FacebookPost.objects.filter(status='published')), key=operator.attrgetter('created_at'), reverse=True)
+        return sorted_combined_list
 
 
 class PostDetailView(DetailView):
     model = Post
     template_name = 'posts/post-details.html'
+    context_object_name = 'post'
+    extra_context = {
+        'post_detail_page': 'active'
+
+    }
 
 
-class FacebookPostsUpdate(View):
-
-    def get(self, request):
-        parameters = {'access_token': USER_ACCESS_TOKEN}
-        page_url = f'https://graph.facebook.com/{PAGE_ID}/feed?fields=message,updated_time,picture.width(1000).height(1000)'
-        data = requests.get(page_url, params=parameters)
-        data_json = data.json()
-        local_id_base = [i.facebook_id for i in Post.objects.all()]
-        facebook_id_base = [data_json['data'][i]['id']
-                            for i in range(0, len(data_json['data']))]
-
-        for i in range(0, len(data_json['data'])):
-
-            if data_json['data'][i]['id'] not in local_id_base:
-                facebook_post = Post(
-                    title=f"Facebook post: {data_json['data'][i]['message'][0:25]}'",
-                    content=data_json['data'][i]['message'],
-                    facebook_id=data_json['data'][i]['id'],
-                )
-
-                if 'picture' in data_json['data'][i].keys():
-                    image = Image.open(requests.get(data_json['data'][i]['picture'], stream=True).raw)
-                    blob = BytesIO()
-                    image.save(blob, 'JPEG')
-                    facebook_post.img.save(f"fb_image_{data_json['data'][i]['id']}.jpg", File(blob), save=False)
-                facebook_post.save()
-
-        for i in local_id_base:
-            if Post.objects.get(facebook_id=i).facebook_id not in facebook_id_base:
-                Post.objects.filter(facebook_id=i).delete()
-
-        return redirect('admin:news_post_changelist')
+def update_facebook_posts(request):
+    if request.method == "POST":
+        from utils.facebook_posts import get_facebook_posts
+        get_facebook_posts()
+        return redirect(reverse('admin:news_facebookpost_changelist'))

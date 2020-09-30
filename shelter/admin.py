@@ -1,14 +1,23 @@
-from .models import Animal, PetOwner
+from .models import Animal, PetOwner, AnimalGallery
 from django.contrib import admin
 
-
-class AnimalAdmin(admin.ModelAdmin):
-    pass
-
-
+@admin.register(PetOwner)
 class PetOwnerAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Animal, AnimalAdmin)
-admin.site.register(PetOwner, PetOwnerAdmin)
+class AnimalGalleryAdmin(admin.TabularInline):
+    model = AnimalGallery
+
+@admin.register(Animal)
+class AnimalAdmin(admin.ModelAdmin):
+    inlines = [AnimalGalleryAdmin, ]
+
+    class Meta:
+        model=Animal
+
+
+# @admin.register(AnimalGallery)
+# class AnimalGalleryAdmin(admin.ModelAdmin):
+#     pass
+
