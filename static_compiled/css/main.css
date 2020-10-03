@@ -7420,13 +7420,6 @@ nav {
         border: 2px solid white;
         object-fit: cover;
         height: 100px; }
-  .animal-details .container .get_adopt_information {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.6); }
-    .animal-details .container .get_adopt_information h5 {
-      color: white; }
-    .animal-details .container .get_adopt_information p {
-      color: white; }
 
 @media (max-width: 767.98px) {
   .animal-details .container {
@@ -7449,3 +7442,27 @@ nav {
 @media (max-width: 991.98px) {
   .post-details .container .post-container {
     width: 100%; } }
+
+.email .subscribe {
+  border: 3px solid #FFA500; }
+
+.email .email-input {
+  outline: none; }
+
+.email h2 {
+  font-family: 'Sriracha', cursive;
+  color: white;
+  font-weight: bold;
+  font-size: 3em; }
+  .email h2 span {
+    color: #FFA500;
+    font-weight: normal; }
+
+@media (max-width: 991.98px) {
+  .email form {
+    width: 100%; } }
+
+.email p {
+  color: white;
+  font-weight: bold;
+  font-size: 1em; }

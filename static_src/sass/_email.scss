@@ -1,0 +1,31 @@
+.email {
+  .subscribe {
+    border: 3px solid $secondary;
+  }
+  .email-input {
+    outline: none;
+  }
+
+  h2 {
+    font-family: 'Sriracha', cursive;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    span{
+      color: $secondary;
+      font-weight: normal;
+    }
+  }
+  form {
+    @include media-breakpoint-down(md){
+      width: 100%;
+    }
+  }
+
+  p {
+    //font-family: 'Sriracha', cursive;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+  }
+}

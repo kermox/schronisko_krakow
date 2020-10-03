@@ -61,7 +61,7 @@
             </div>
             <h1 class="text-center">Galeria</h1>
 
-            <div class="galery-wrapper w-100 d-flex justify-content-center align-items-center mb-5"
+            <div class="galery-wrapper w-100 d-flex justify-content-center align-items-center"
                  style="background-image:
                          url('{% if animal.species == 'dog' %}{% static "img/dog.svg" %}{% elif animal.species == 'cat' %}{% static "img/cat.svg" %}{% endif %}');">
                 {% for animal in animal.photos.all %}
@@ -77,19 +77,24 @@
             </div>
         </div>
     </section>
-    {{ flash_message }}
 {% endblock %}
 {% block email %}
-    {% if flash_message %}
-        CONGRATUFUCKINGLATIONS!
-    {% endif %}
-    <div class="get_adopt_information nav-bg-dark py-3 px-3 d-flex flex-column justify-content-center align-items-center rounded">
-        <h5>Chcesz dowiedzieć się więcej o tym w jaki sposób zaadaptować wybranego zwierzaka?</h5>
-        <p>Podaj swój email, a wyślemy Ci wszystkie niezbędne informacje</p>
-        <form method="POST">
-            {% csrf_token %}
-            {% render_field form.email_address name="email" %}
-            <input type="submit" class="btn btn-secondary">
-        </form>
-    </div>
+    <section class="email bg-primary py-5 mt-5">
+        <div class="container">
+            <div class="subscribe nav-bg-dark rounded py-5 px-3 d-flex flex-column justify-content-center align-items-center" data-aos="zoom-in" >
+                {% if flash_message %}
+                    <h2>Dziękujemy!</h2>
+                    <p>Teraz możesz sprawdzić swoją skrzynkę.</p>
+                {% else %}
+                    <h2 class="mb-3">Spodobał się <span>{{ animal.name }}</span>?</h2>
+                    <p>Wpisz poniżej swój adres e-mail, a wyślemy Ci wszystkie informacje niezbędne do adopcji.</p>
+                    <form method="POST" class="d-flex">
+                        {% csrf_token %}
+                        {% render_field form.email_address name="email" class="email-input w-100 py-2 px-2 mr-3" placeholder="e-mail" %}
+                        <input type="submit" class="btn btn-outline-secondary">
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </section>
 {% endblock %}
