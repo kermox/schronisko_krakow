@@ -7323,63 +7323,98 @@ nav {
   .news .main-content .card-body {
     width: 100%; } }
 
-.adoption .container .modal .modal-dialog .modal-body {
+.adoption .search-container {
+  margin: 80px 0 20px 0; }
+  .adoption .search-container blockquote > p {
+    font-family: 'Sriracha', cursive;
+    color: black;
+    font-weight: bold;
+    font-size: 2em; }
+  .adoption .search-container .search-animals-button {
+    border-radius: 200px;
+    border: none;
+    outline: none;
+    color: #FFA500;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all 0.1s; }
+    .adoption .search-container .search-animals-button:hover {
+      background-color: #FFA500;
+      color: white;
+      transition: all 0.1s; }
+
+.adoption .modal-body {
   border-radius: 5px;
   background-color: #f8f9f5; }
-
-.adoption .container .modal .modal-dialog label {
-  text-transform: uppercase;
-  color: black;
-  background-color: #f8f9f5; }
-
-.adoption .container .modal .modal-dialog .md-form {
-  background-color: #f8f9f5; }
-
-.adoption .container .modal .modal-dialog input[type="text"], .adoption .container .modal .modal-dialog .form-control {
-  outline: none;
-  box-shadow: none !important;
-  border-radius: 0;
-  border-bottom: solid 1px #f8f9f5 !important;
-  background-color: #f8f9f5;
-  margin: 0; }
-  .adoption .container .modal .modal-dialog input[type="text"]:focus, .adoption .container .modal .modal-dialog .form-control:focus {
-    border: none; }
-
-.adoption .container .modal .modal-dialog input[type="submit"] {
-  color: black;
-  outline: none;
-  box-shadow: none;
-  border-radius: 3px;
-  border: solid 1px #FFA500;
-  background-color: #f8f9f5;
-  margin-top: 5px; }
-  .adoption .container .modal .modal-dialog input[type="submit"]:hover {
-    background-color: #FFA500; }
-
-.adoption .container .main-content .search {
-  width: 50%; }
-
-.adoption .container .main-content .card {
-  width: 18rem;
-  border: 0; }
-  .adoption .container .main-content .card .card-body {
-    position: relative;
-    height: 16em;
+  .adoption .modal-body .close {
+    outline: none; }
+  .adoption .modal-body form label {
+    text-transform: uppercase;
+    color: black;
+    background-color: #f8f9f5; }
+  .adoption .modal-body form .md-form {
+    background-color: #f8f9f5; }
+  .adoption .modal-body form input[type="text"], .adoption .modal-body form .form-control {
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 0;
+    border-bottom: solid 1px #f8f9f5 !important;
     background-color: #f8f9f5;
-    overflow: hidden; }
-    .adoption .container .main-content .card .card-body .card-body-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, white 0%, rgba(255, 255, 255, 0) 33%);
-      z-index: 100; }
-  .adoption .container .main-content .card .h-container .card-title {
-    background-color: #FFA500; }
-  .adoption .container .main-content .card .btn:hover {
-    background-color: #FFA500; }
+    margin: 0; }
+    .adoption .modal-body form input[type="text"]:focus, .adoption .modal-body form .form-control:focus {
+      border: none; }
+  .adoption .modal-body form .btn {
+    color: black;
+    outline: none;
+    box-shadow: none;
+    border-radius: 3px;
+    border: solid 1px #FFA500;
+    background-color: #f8f9f5;
+    margin-top: 5px; }
+    .adoption .modal-body form .btn:hover {
+      background-color: #FFA500; }
+
+.adoption .animal-card-link {
+  color: black; }
+  .adoption .animal-card-link:hover .card {
+    opacity: 1;
+    transition: all 0.1s ease-in-out; }
+  .adoption .animal-card-link:hover .btn {
+    background-color: #FFA500;
+    transition: background-color ease-in-out 0.1s;
+    outline: none; }
+  .adoption .animal-card-link .card {
+    width: 100%;
+    transition: all 0.1s ease-in-out;
+    opacity: 0.85;
+    border: none; }
+    .adoption .animal-card-link .card .card-body {
+      position: relative;
+      height: 16em;
+      background-color: #f8f9f5;
+      overflow: hidden; }
+      .adoption .animal-card-link .card .card-body .card-body-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, white 0%, rgba(255, 255, 255, 0) 33%);
+        z-index: 100; }
+    .adoption .animal-card-link .card .card-header-container .card-title {
+      background-color: #FFA500; }
+    .adoption .animal-card-link .card .btn {
+      transition: background-color 0.1s ease-in-out;
+      border: none; }
+
+.adoption .pagination .btn-secondary:hover {
+  background-color: #FFA500;
+  color: black;
+  border-color: #FFA500; }
+
+@media (max-width: 991.98px) {
+  .adoption .modal-body .form-input, .adoption .modal-body label {
+    font-size: 1.25rem; } }
 
 .animal-details .container {
   margin-top: 100px; }

@@ -10,101 +10,99 @@
         <div class="header-text d-flex justify-content-center w-100">
             <h1 class="display-1 px-3 py-3">Adopcje</h1>
         </div>
-        <div class="container">
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered w-100" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <form action="{% url 'animal-list' %}" method="get" class="search-form">
-                                <div class="md-form form-sm">
-                                    <label for="identification_number">Nr identyfikacyjny</label>
-                                    {% render_field form.identification_number placeholder="Nr identyfikacyjny" id="identification_number" class='form-control form-control-sm border-0' %}
-                                </div>
-                                <div class="md-form form-sm">
-                                    <label for="chip_number">Nr chip</label>
-                                    {% render_field form.chip_number placeholder="numer chip" id="chip_number" class='form-control form-control-sm border-0' %}
-                                </div>
-                                <div class="md-form form-sm">
-                                    <label for="name">Imię</label>
-                                    {% render_field form.name placeholder="imię" id="name" class='form-control form-control-sm border-0' %}
-                                </div>
-
-                                <div class="md-form form-sm">
-                                    <label for="id_size">Rozmiar</label>
-                                    {% render_field form.size class='form-control form-control-sm border-0' %}
-                                </div>
-                                <div class="md-form form-sm">
-                                    <label for="id_species">Gatunek</label>
-                                    {% render_field form.species class='form-control form-control-sm border-0' selected=True %}
-                                </div>
-                                <div class="w-100 d-flex justify-content-center mt-3">
-                                    <i class="d-flex align-items-center mt-1 mr-1">{% fa5_icon 'search' %}</i>
-                                    <input type="submit" value="Szukaj" class="text-uppercase mr-4">
-                                </div>
-                            </form>
-                        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <form action="{% url 'animal-list' %}" method="get" class="search-form">
+                            <label for="identification_number">Nr identyfikacyjny</label>
+                            {% render_field form.identification_number placeholder="Nr identyfikacyjny" id="identification_number" class='form-control form-control-sm border-0 form-input' %}
+                            <label for="chip_number">Nr chip</label>
+                            {% render_field form.chip_number placeholder="numer chip" id="chip_number" class='form-control form-control-sm border-0 form-input' %}
+                            <label for="name">Imię</label>
+                            {% render_field form.name placeholder="imię" id="name" class='form-control form-control-sm border-0 form-input' %}
+                            <label for="id_size">Rozmiar</label>
+                            {% render_field form.size class='form-control form-control-sm border-0 form-input' %}
+                            <label for="id_species">Gatunek</label>
+                            {% render_field form.species class='form-control form-control-sm border-0 form-input' %}
+                            <div class="w-100 d-flex justify-content-center mt-3">
+                                <button type="submit" class="text-uppercase btn btn-outline-secondary py-2 px-3"><i
+                                        class="mr-1">{% fa5_icon 'search' %}</i> szukaj
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="main-content py-5">
-                <h3 class="text-center font-weight-lighter font-italic my-5 ">"Prawdziwy przyjaciel pozostawi ślady
-                    łap na Twoim sercu"</h3>
-                <div class="d-flex w-100 justify-content-center">
-                    <button type="button"
-                            class="search btn btn-outline-secondary animate__animated animate__fadeInDown animate__delay-1s mb-3"
-                            data-toggle="modal" data-target="#exampleModal">
-                        {% fa5_icon "paw" %} Wyszukaj
-                    </button>
-                </div>
+        </div>
+        <div class="search-container bg-primary d-flex flex-column justify-content-center align-items-center px-2 py-3 w-100">
+            <div class="container d-flex flex-column align-items-center">
+                <blockquote class="blockquote text-center" id="searchButton">
+                    <p class="mb-0">"Prawdziwy przyjaciel pozostawi ślady
+                        łap na Twoim sercu"</p>
+                    <footer class="blockquote-footer">Roger Caras</footer>
+                </blockquote>
+                <button type="button"
+                        class="search-animals-button btn animate__animated animate__tada animate__delay-1s py-2 px-4 d-flex justify-content-center align-items-center"
+                        data-toggle="modal" data-target="#exampleModal">
+                    {% fa5_icon "search" size='fa-2x' color='white' %} <span class="ml-2">Wyszukaj</span>
+                </button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="animal-cards py-3">
                 <div class="row">
                     {% for i in page_obj %}
-                        <div class="card py-3 px-3 col-12 col-md-6 col-lg-4 d-flex align-items-center">
-                            <img class="card-img-top" src="{{ i.photo.url }}" alt="Fotografia zwierzaka">
-                            <div class="card-body w-100">
-                                <div class="card-body-overlay"></div>
-                                <div class="h-container d-flex justify-content-start">
-                                    <h5 class="card-title px-1 py-1">
-                                        {% if i.age > 4 %}
-                                            {{ i.name }} / {{ i.age }} lat
-                                        {% elif i.age == 1 %}
-                                            {{ i.name }} / {{ i.age }} roczek
-                                        {% elif i.age < 5 %}
-                                            {{ i.name }} / {{ i.age }} lata
-                                        {% endif %}
-                                    </h5>
+                        <div class="col-12 col-md-6 col-lg-4 px-3 py-3">
+                            <a href="{% url 'animal-detail' i.slug %}" class="animal-card-link text-decoration-none">
+                                <div class="card d-flex align-items-center">
+                                    <img class="card-img-top" src="{{ i.photo.url }}" alt="Fotografia zwierzaka">
+                                    <div class="card-body w-100">
+                                        <div class="card-body-overlay"></div>
+                                        <div class="card-header-container d-flex justify-content-start">
+                                            <h5 class="card-title px-1 py-1">
+                                                {% if i.age > 4 %}
+                                                    {{ i.name }} / {{ i.age }} lat
+                                                {% elif i.age == 1 %}
+                                                    {{ i.name }} / {{ i.age }} roczek
+                                                {% elif i.age < 5 %}
+                                                    {{ i.name }} / {{ i.age }} lata
+                                                {% endif %}
+                                            </h5>
+                                        </div>
+                                        <p class="card-text truncate">{{ i.additional_information }}</p>
+                                    </div>
+                                    <button type="button" class="btn btn-primary w-75 mt-2 py-2">Więcej..</button>
                                 </div>
-                                <p class="card-text truncate">{{ i.additional_information }}</p>
-                            </div>
-                            <a href="{% url 'animal-detail' i.slug %}"
-                               class="btn btn-primary w-50 mt-2">Więcej...</a>
+                            </a>
                         </div>
                     {% endfor %}
                 </div>
-                <div class="d-flex justify-content-center mt-3">
-                    {% if is_paginated %}
-                        {% if page_obj.has_previous %}
-                            <a href="?page=1"
-                               class="btn btn-outline-secondary mx-1">{% fa5_icon 'angle-double-left' %}</a>
-                        {% endif %}
-                        {% for num in page_obj.paginator.page_range %}
-                            {% if page_obj.number == num %}
-                                <a href="?page={{ num }}" class="btn btn-secondary mx-1">{{ num }}</a>
-                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                <a href="?page={{ num }}" class="btn btn-outline-secondary mx-1">{{ num }}</a>
-                            {% endif %}
-                        {% endfor %}
-                        {% if page_obj.has_next %}
-                            <a href="?page={{ page_obj.paginator.num_pages }}"
-                               class="btn btn-outline-secondary mx-1">{% fa5_icon 'angle-double-right' %}</a>
-                        {% endif %}
-                    {% endif %}
-                </div>
             </div>
+        </div>
+        <div class="pagination d-flex justify-content-center mt-3 mb-5">
+            {% if is_paginated %}
+                {% if page_obj.has_previous %}
+                    <a href="?page=1"
+                       class="btn btn-outline-secondary mx-1">{% fa5_icon 'angle-double-left' %}</a>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <a href="?page={{ num }}" class="btn btn-secondary mx-1">{{ num }}</a>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <a href="?page={{ num }}" class="btn btn-outline-secondary mx-1">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.paginator.num_pages }}"
+                       class="btn btn-outline-secondary mx-1">{% fa5_icon 'angle-double-right' %}</a>
+                {% endif %}
+            {% endif %}
         </div>
     </section>
 {% endblock %}
