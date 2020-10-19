@@ -16,7 +16,3 @@ class TestUrls(SimpleTestCase):
     def test_topic_detail_url_resolves(self):
         url = reverse('news-topic-detail', args=['some-slug'])
         self.assertEquals(resolve(url).func.view_class, TopicDetailView)
-
-    def test_update_facebook_post_url_resolves(self):
-        url = reverse('news-update')
-        self.assertEquals(resolve(url).func, update_facebook_posts)
