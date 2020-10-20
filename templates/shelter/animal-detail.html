@@ -61,9 +61,8 @@
             </div>
             <h1 class="text-center">Galeria</h1>
 
-            <div class="galery-wrapper w-100 d-flex justify-content-center align-items-center"
-                 style="background-image:
-                         url('{% if animal.species == 'dog' %}{% static "img/dog.svg" %}{% elif animal.species == 'cat' %}{% static "img/cat.svg" %}{% endif %}');">
+            <div class="gallery-wrapper w-100 d-flex justify-content-center align-items-center"
+                 style="background-image:url('{% if animal.species == 'dog' %}{% static "img/dog-gallery-bg.svg" %}{% elif animal.species == 'cat' %}{% static "img/cat-gallery-bg.svg" %}{% endif %}');">
                 {% for animal in animal.photos.all %}
                     <figure>
                         <a data-fancybox="gallery" href="{{ animal.photos.url }}">
