@@ -1,0 +1,29 @@
+.numbers {
+
+  .count-text {
+    border-left: 2px solid $secondary;
+    @include media-breakpoint-down(md) {
+      border-left: none;
+    }
+    @include media-breakpoint-down(sm) {
+      border-left: none;
+      margin-top: 14px;
+    }
+
+    h3 {
+      color: black;
+      text-align: start;
+    }
+  }
+
+  .count-number {
+    font-family: 'Sriracha', cursive;
+    font-size: 5rem;
+    text-align: center;
+    color: $secondary;
+
+    @include media-breakpoint-down(sm) {
+      border-bottom: 2px solid $secondary;
+    }
+  }
+}
