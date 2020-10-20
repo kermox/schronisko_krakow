@@ -1,0 +1,164 @@
+.search-modal {
+  .modal-body {
+    border-radius: 5px;
+    background-color: $primary;
+
+    .close {
+      outline: none;
+    }
+
+    .search-form {
+      label {
+        text-transform: uppercase;
+        color: black;
+        background-color: $primary;
+      }
+
+      .form-text-input {
+        font-size: 1rem;
+        outline: none;
+        box-shadow: none;
+        border-radius: 0;
+        background-color: $primary;
+        margin: 0;
+        color: $secondary;
+        border: none;
+        text-transform: uppercase;
+        @include media-breakpoint-down(lg) {
+          font-size: 1.25rem;
+        }
+
+        &:focus {
+          border: none;
+        }
+      }
+
+      .form-select-input {
+        color: $secondary;
+      }
+
+      .select-box {
+        position: relative;
+
+        .option-container {
+          max-height: 0;
+          opacity: 0;
+          overflow: hidden;
+          transition: all 0.4s;
+          order: 1;
+
+          &.active {
+            max-height: 500px;
+            opacity: 1;
+            transition: all 0.4s;
+          }
+
+          input {
+            display: none;
+          }
+
+          label {
+            padding: 20px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            margin: 0;
+
+            &:hover {
+              background-color: $secondary;
+            }
+          }
+
+          .option {
+            cursor: pointer;
+            width: 100%;
+
+            &:hover {
+              background-color: $secondary;
+              transition: background-color 0.3s;
+            }
+          }
+        }
+
+        .selected {
+          background: $primary;
+          border-radius: 8px;
+          width: 100%;
+          color: black;
+          position: relative;
+          order: 0;
+          cursor: pointer;
+          text-transform: uppercase;
+
+          &.active {
+            &::after {
+              transform: rotate(180deg) translateY(50%);
+              transition: all 0.4s;
+            }
+          }
+
+          &::after {
+            content: "▼";
+            color: $secondary;
+            position: absolute;
+            font-size: $font-size-lg;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            transition: all 0.4s;
+            width: 20px;
+            height: 20px;
+          }
+
+          input {
+            display: none;
+          }
+        }
+
+        .reset {
+          position: absolute;
+          top: 5px;
+          right: 30px;
+          font-size: $font-size-lg;
+          transform: translateX(50%);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.2s;
+          border: none;
+          outline: none;
+          box-shadow: none;
+          background-color: $primary;
+          padding: 0 !important;
+          width: 35px;
+          height: 35px;
+
+          &:focus {
+            outline: none;
+          }
+
+          &.show {
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.2s ease-in-out;
+          }
+        }
+      }
+
+      .form-submit {
+        color: black;
+        outline: none;
+        box-shadow: none;
+        border-radius: 3px;
+        border: solid 1px $secondary;
+        background-color: $primary;
+        margin-top: 5px;
+
+        &:hover {
+          background-color: $secondary;
+        }
+      }
+    }
+  }
+}
