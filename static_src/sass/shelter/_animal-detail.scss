@@ -26,7 +26,7 @@
         border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
         border: solid 7px #41403E;
         background-color: #F8F9F5;
-        min-height: 80px;
+        padding: 20px 20px 20px 20px;
       }
 
       p, h5 {
@@ -58,13 +58,6 @@
           height: 100px;
         }
       }
-    }
-  }
-}
-@include media-breakpoint-down(sm) {
-  .animal-details{
-    .container {
-      margin-top: 20px;
     }
   }
 }
