@@ -1,0 +1,15 @@
+.topic-article {
+  .card-body {
+    border: 1px solid $secondary;
+  }
+
+  .card-title {
+    @include media-breakpoint-down(sm) {
+      font-size: 20px;
+    }
+    @supports (font-size: clamp(2.5rem, 10vw, 3.5rem)) {
+      font-size: clamp(2.5rem, 10vw, 3.5em);
+    }
+    font-weight: 300;
+  }
+}
