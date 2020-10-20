@@ -1,0 +1,49 @@
+.events {
+
+  .carousel-indicators {
+    bottom: -15%;
+
+    .active {
+      background-color: $secondary;
+    }
+  }
+
+  .carousel-img {
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .carousel-item > a > div {
+    transition: opacity 0.3s;
+  }
+
+  .carousel-item > a:hover > div {
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+
+  .carousel-control-next, .carousel-control-prev {
+    position: relative;
+    @include media-breakpoint-down(md) {
+      background-color: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 100%;
+    }
+
+    .carousel-control-next-icon, .carousel-control-prev-icon {
+      background-image: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .carousel {
+      width: 100% !important;
+    }
+  }
+}
