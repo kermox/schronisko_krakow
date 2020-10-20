@@ -1,0 +1,9 @@
+.pagination {
+  .btn-secondary {
+    &:hover {
+      background-color: $secondary;
+      color: black;
+      border-color: $secondary;
+    }
+  }
+}
