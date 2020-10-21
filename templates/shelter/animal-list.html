@@ -6,41 +6,12 @@
     <section class="adoption">
         <header class="header-img d-flex align-items-end justify-content-center"
                 style="background-image: url('{% static 'img/adoption-background.jpg' %}');">
-        </header>
-        <div class="header-text d-flex justify-content-center w-100">
-            <h1 class="display-1 px-3 py-3">Adopcje</h1>
-        </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <form action="{% url 'animal-list' %}" method="get" class="search-form">
-                            <label for="identification_number">Nr identyfikacyjny</label>
-                            {% render_field form.identification_number placeholder="Nr identyfikacyjny" id="identification_number" class='form-control form-control-sm border-0 form-input' %}
-                            <label for="chip_number">Nr chip</label>
-                            {% render_field form.chip_number placeholder="numer chip" id="chip_number" class='form-control form-control-sm border-0 form-input' %}
-                            <label for="name">Imię</label>
-                            {% render_field form.name placeholder="imię" id="name" class='form-control form-control-sm border-0 form-input' %}
-                            <label for="id_size">Rozmiar</label>
-                            {% render_field form.size class='form-control form-control-sm border-0 form-input' %}
-                            <label for="id_species">Gatunek</label>
-                            {% render_field form.species class='form-control form-control-sm border-0 form-input' %}
-                            <div class="w-100 d-flex justify-content-center mt-3">
-                                <button type="submit" class="text-uppercase btn btn-outline-secondary py-2 px-3"><i
-                                        class="mr-1">{% fa5_icon 'search' %}</i> szukaj
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            <div class="header-text d-flex justify-content-center w-100">
+                <h1 class="h-like-xlg px-3 py-3">Adopcje</h1>
             </div>
-        </div>
-        <div class="search-container bg-primary d-flex flex-column justify-content-center align-items-center px-2 py-3 w-100">
+        </header>
+        {% include 'shelter/animal-list-search-modal.html' %}
+        <div class="adoption-welcome bg-primary d-flex flex-column justify-content-center align-items-center px-2 py-3 w-100">
             <div class="container d-flex flex-column align-items-center">
                 <blockquote class="blockquote text-center" id="searchButton">
                     <p class="mb-0">"Prawdziwy przyjaciel pozostawi ślady

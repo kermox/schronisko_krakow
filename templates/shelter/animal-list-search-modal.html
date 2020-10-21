@@ -1,0 +1,72 @@
+{% load widget_tweaks %}
+{% load fontawesome_5 %}
+{% load static %}
+{% if form %}
+    <div class="search-modal modal fade" id="searchModal" tabindex="-1" role="dialog"
+         aria-labelledby="Okno wyszukiwania."
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <form action="{% url 'animal-list' %}" method="get" class="search-form">
+                        <label for="identification_number">Nr identyfikacyjny</label>
+                        {% render_field form.identification_number id="identification_number" placeholder=' ...' class='form-control form-text-input' %}
+                        <label for="chip_number">Nr chip</label>
+                        {% render_field form.chip_number id="chip_number" placeholder=' ...' class='form-control form-text-input' %}
+                        <label for="name">Imię</label>
+                        {% render_field form.name id="name" placeholder=' ...' class='form-control form-text-input' %}
+                        <div id="searchGenderSelectBox"
+                             class="select-box my-2 d-flex flex-column justify-content-center align-items-center">
+                            <div class="option-container bg-primary w-100 d-flex flex-column justify-content-center align-items-center pb-2">
+                                {% for i in form.gender %}
+                                    <div class="option">{{ i }}</div>
+                                {% endfor %}
+                            </div>
+                            <div id="searchGender" class="selected py-2">Płeć</div>
+                            <button type="button" class="reset pt-2">&times;</button>
+                        </div>
+                        <div id="searchAgeSelectBox"
+                             class="select-box my-2 d-flex flex-column justify-content-center align-items-center">
+                            <div class="option-container bg-primary w-100 d-flex flex-column justify-content-center align-items-center pb-2">
+                                {% for i in form.age %}
+                                    <div class="option">{{ i }}</div>
+                                {% endfor %}
+                            </div>
+                            <div id="searchAge" class="selected py-2">Wiek</div>
+                            <button type="button" class="reset pt-2">&times;</button>
+                        </div>
+                        <div id="searchSizeSelectBox"
+                             class="select-box my-2 d-flex flex-column justify-content-center align-items-center">
+                            <div class="option-container bg-primary w-100 d-flex flex-column justify-content-center align-items-center pb-2">
+                                {% for i in form.size %}
+                                    <div class="option">{{ i }}</div>
+                                {% endfor %}
+                            </div>
+                            <div id="searchSize" class="selected py-2">Rozmiar</div>
+                            <button type="button" class="reset pt-2">&times;</button>
+                        </div>
+                        <div id="searchSpeciesSelectBox"
+                             class="select-box my-2 d-flex flex-column justify-content-center align-items-center">
+                            <div class="option-container bg-primary w-100 d-flex flex-column justify-content-center align-items-center pb-2">
+                                {% for i in form.species %}
+                                    <div class="option">{{ i }}</div>
+                                {% endfor %}
+                            </div>
+                            <div id="searchSpecies" class="selected py-2">Gatunek</div>
+                            <button type="button" class="reset pt-2">&times;</button>
+                        </div>
+                        <div class="w-100 d-flex justify-content-center mt-3">
+                            <button type="submit"
+                                    class="form-submit text-uppercase btn btn-outline-secondary py-2 px-3"><i
+                                    class="mr-1">{% fa5_icon 'search' %}</i> szukaj
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
