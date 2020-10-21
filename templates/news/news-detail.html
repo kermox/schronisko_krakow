@@ -2,9 +2,9 @@
 {% load static %}
 {% load fontawesome_5 %}
 {% block content %}
-    <div class="post-details" style="background-image: url('{% static "img/post-detail-background3.jpg" %}')">
+    <section class="news-detail" style="background-image: url('{% static "img/post-detail-background.jpg" %}')">
         <div class="container d-flex flex-column justify-content-center align-items-center">
-            <div class="post-container d-flex flex-column align-items-center rounded">
+            <div class="post d-flex flex-column align-items-center rounded">
                 {% if post.img %}
                     <div class="img-container w-100 ">
                         <img class="img-fluid card-img-top" src="{{ post.img.url }}"
@@ -20,9 +20,7 @@
                     </p>
                 </div>
             </div>
-            <a href="{% url 'post-list' %}" class="btn btn-outline-secondary mt-2 text-justify">{% fa5_icon 'long-arrow-alt-left' %} cofnij</a>
+        <button type="button" onclick="history.back()" class="btn btn-outline-secondary mt-3 px-3 py-2">{% fa5_icon 'long-arrow-alt-left' %} cofnij</button>
         </div>
-    </div>
-    {% block mail %}
-    {% endblock %}
+    </section>
 {% endblock %}
