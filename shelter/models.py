@@ -2,7 +2,36 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.urls import reverse
 from utils.utils import unique_slug_generator
-from django.db.models.signals import pre_save
+
+
+class PetOwner(models.Model):
+    first_name = models.CharField(
+        max_length=50,
+        verbose_name='imię',
+    )
+    second_name = models.CharField(
+        max_length=50,
+        verbose_name='nazwisko',
+    )
+    address = models.CharField(
+        max_length=150,
+        verbose_name='adress',
+        help_text='Podaj adress zamieszkania',
+    )
+    email = models.EmailField(
+        verbose_name='e-mail',
+    )
+    phone_number = models.PositiveIntegerField(
+        verbose_name='numer telefonu'
+    )
+    adopting_agreement = models.FileField(
+        upload_to='agreements/',
+        verbose_name='umowa adopcyjna',
+    )
+
+    def __str__(self):
+        return f'{self.first_name} {self.second_name} - {self.email}'
+
 
 
 class Animal(models.Model):
@@ -126,6 +155,18 @@ class Animal(models.Model):
     photo = models.ImageField(
         upload_to='animal_photos/',
         verbose_name='zdjęcie',
+    )
+    adopted = models.BooleanField(
+        null=False,
+        blank=False,
+        default=False,
+        verbose_name='adaptowany'
+    )
+    adopted_by = models.ForeignKey(
+        PetOwner,
+        blank=True,
+        null=True,
+        on_delete=models.PROTECT,
     )
 
     def __str__(self):
