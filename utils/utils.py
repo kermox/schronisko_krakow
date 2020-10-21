@@ -1,6 +1,18 @@
 import string
 import random
 from django.utils.text import slugify
+from django.db import models
+
+
+class TimeStampMixin(models.Model):
+    """
+    Class to update models with DateTimeFields.
+    """
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+
+    class Meta:
+        abstract = True
 
 
 def random_string_generator(size=10, chars=string.ascii_lowercase + string.digits):
