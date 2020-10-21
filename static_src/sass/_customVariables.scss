@@ -2,19 +2,14 @@
 // colors
 $primary: #f8f9f5;
 $secondary: #FFA500;
-$hover-background: #5a5a5a;
-$nav-bg: rgba(0, 0, 0, 0.2);
-$nav-bg-dark : rgba(0, 0, 0, 0.8);
-$nav-bg-darker: rgba(0, 0, 0, 0.95);
+$dark : rgba(0,0,0,0.9);
+$bg-light: rgba(0,0,0, 0.2);
+$bg-dark: rgba(0, 0, 0, 0.9);
 
 $dropdown-link-hover-color: $primary;
-$dropdown-link-hover-bg: $hover-background;
 
 $navbar-dark-color: $primary;
 $navbar-dark-hover-color: $secondary;
 $navbar-dark-active-color: $secondary;
-$navbar-dark-toggler-border-color: $secondary;
 
 
-// display
-$display1-weight: 500;
