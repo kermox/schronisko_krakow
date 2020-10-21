@@ -1,5 +1,7 @@
-.email {
-  .subscribe {
+.subscribe {
+  -webkit-filter: opacity(1);
+  .subscribe-body {
+    background-color: rgba(0,0,0,0.9);
     border: 3px solid $secondary;
   }
   .email-input {
@@ -19,11 +21,14 @@
   form {
     @include media-breakpoint-down(md){
       width: 100%;
+      flex-wrap: wrap;
+      input {
+        margin-top: 15px;
+      }
     }
   }
 
   p {
-    //font-family: 'Sriracha', cursive;
     color: white;
     font-weight: bold;
     font-size: 1em;
