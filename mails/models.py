@@ -2,8 +2,22 @@ from django.db import models
 from django.core.validators import EmailValidator
 
 
-class EmailTemplates(models.Model):
-    email_body = models.TextField(blank=True, null=False)
+class EmailTemplate(models.Model):
+    title = models.CharField(
+        max_length=250,
+        blank=True,
+        null=False,
+        verbose_name='Tytuł'
+    )
+    body = models.TextField(
+        blank=True,
+        null=False,
+        verbose_name='Treść'
+    )
+
+    class Meta:
+        verbose_name = 'Template'
+        verbose_name_plural = 'Templates'
 
     def __str__(self):
         return self.email_body[0:20]
