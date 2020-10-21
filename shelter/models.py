@@ -198,36 +198,26 @@ class AnimalGallery(models.Model):
         verbose_name_plural="Galeria zdjęć"
 
 
-class PetOwner(models.Model):
-    first_name = models.CharField(
-        max_length=50,
-        verbose_name='imię',
-    )
-    second_name = models.CharField(
-        max_length=50,
-        verbose_name='nazwisko',
-    )
-    adress = models.CharField(
-        max_length=150,
-        verbose_name='adress',
-        help_text='Podaj adress zamieszkania',
-    )
-    email = models.EmailField(
-        verbose_name='e-mail',
-    )
-    phone_number = models.PositiveIntegerField(
-        verbose_name='numer telefonu'
-    )
-    animal = models.ForeignKey(
-        Animal,
-        on_delete=models.PROTECT,
-        verbose_name='adoptowane zwiere',
-        help_text='Wybierz zwierzę które chcesz zaadaptować',
-    )
-    adopting_agreement = models.FileField(
-        upload_to='agreements/',
-        verbose_name='umowa adopcyjna',
+class ShelterGallery(models.Model):
+    gallery_name = models.CharField(
+        max_length=200,
+        default='Galeria zdjęć',
+        null=False,
+        blank=False,
     )
 
+    class Meta:
+        verbose_name = 'Galeria zdjęć'
+        verbose_name_plural = 'Galeria zdjęć'
+
     def __str__(self):
-        return f'{self.first_name} {self.second_name} - {self.email} - {self.animal}'
+        return self.gallery_name
+
+
+class ShelterGalleryPhotos(models.Model):
+    gallery_name = models.ForeignKey(ShelterGallery, related_name='photos', default=None, on_delete=models.CASCADE)
+    photo = models.ImageField(
+        upload_to='gallery_photos',
+        blank=True,
+        null=False,
+    )
