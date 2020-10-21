@@ -74,17 +74,63 @@ nav {
     }
   }
 
-    .navbar-collapse {
-      .collapse-trick-close {
-        height: 0;
-        transition: height 0.7s;
+  .navbar-collapse {
+    transition: all 0.2s !important;
 
-        &.collapse-trick-open {
-          height: 100vh;
-          transition: height 0.7s;
+    .nav-link:focus {
+      outline: none;
+    }
+
+    .dropdown-menu {
+      padding: 0;
+      margin: 0;
+      display: block;
+      visibility: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: .3s all;
+
+      .dropdown-item {
+        text-align: center;
+        visibility: hidden;
+        transition: background-color 0.3s ease;
+
+        &:first-child {
+          border-radius: 3px 3px 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 0 3px 3px;
+        }
+
+        &:hover {
+          background-color: $secondary;
         }
       }
 
+      &.show {
+        max-height: 200px;
+        visibility: visible;
+        opacity: 1;
+        transition: .3s all;
+
+        .dropdown-item {
+          font-size: $font-size-base;
+          display: block;
+          visibility: visible;
+        }
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      font-size: $font-size-lg;
+    }
+
+    .empty {
+      @include media-breakpoint-down(md) {
+        height: 100vh;
+      }
+    }
 
       &.collapsing {
         -webkit-transition: height 0.7s;
