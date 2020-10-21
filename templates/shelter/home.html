@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load fontawesome_5 %}
 {% load static %}
 {% block content %}
     <header class="welcome d-flex flex-column justify-content-center align-items-center"
@@ -6,74 +7,219 @@
         <h1 class="display-1">Potrzebuję Cię!</h1>
         <h5>Jeżeli jesteś w stanie podarować zwierzakom dom - zrób to!</h5>
     </header>
-    <section class="about-us">
+    <section class="numbers bg-primary py-5">
         <div class="container-fluid container-md">
-            <h1 class="display-4 bg-primary text-center mb-5 mt-5">Nasza Historia</h1>
-            <div class="row py-3">
-                <div class="col-12 col-md-6 d-md-block d-flex justify-content-center" data-aos="fade-right">
-                    <img class="img-fluid rounded float-right about-us-img" src='{% static "img/about-us.jpg" %}'
-                         alt="Dzięwczynka głaszczy psa">
-                </div>
-                <div class="col-12 col-md-6 d-flex align-items-center" data-aos="fade-left">
-                    <div class="container">
-                        <p class="text-body mb-0 mt-3 mt-md-0">
-                            Schronisko dla Bezdomnych Zwierząt powstało w 1994 roku. Zostało zbudowane ze środków Gminy
-                            Miasta
-                            Krakowa oraz Krakowskiego Towarzystwa Opieki nad Zwierzętami.
-
-                            Ten szczególny obiekt zabezpiecza zgodnie z Ustawą z dnia 13 września 1996 r. - o utrzymaniu
-                            czystości i porządku w gminach, miejsce pobytu zwierzętom pozostawionym bez dozoru oraz
-                            organizuje
-                            ochronę przed bezdomnymi zwierzętami. Prowadzenie schroniska dla bezdomnych zwierząt jako
-                            zadanie
-                            własne gminy wynika z realizacji zapisu art. 11 ust 1 Ustawy z dnia 21 sierpnia 1997 r. - o
-                            ochronie
-                            zwierząt.
-
-                        </p>
+            <div class="row w-100 m-0 h-25 py-4 d-flex justify-content-center">
+                <div class="col-12 col-lg-6 w-100 h-100 rounded d-flex justify-content-center align-items-center">
+                    <div class="row overflow-hidden">
+                        <div class="col-12 col-sm-4 d-flex px-0 align-items-center justify-content-center"><span
+                                class="count count-number">{{ not_adopted_animals.count }}</span></div>
+                        <div class="count-text col-12 col-sm-8 px-0 d-flex align-items-center justify-content-center pl-3">
+                            <h3 class="h-like-sm text-center text-sm-left">Zwierzaków
+                                czeka na adopcje.</h3></div>
                     </div>
                 </div>
-            </div>
-            <div class="row py-3">
-                <div class="col-12 col-md-6 order-1 order-md-2 d-md-block d-flex justify-content-center" data-aos="fade-left">
-                    <img class="img-fluid rounded float-right about-us-img" src='{% static "img/about-us2.jpg" %}'
-                         alt="Dzięwczynka głaszczy psa">
-                </div>
-                <div class="col-12 col-md-6 d-flex align-items-center order-2 order-md-1" data-aos="fade-right">
-                    <div class="container">
-                        <p class="text-body mb-0 mt-3 mt-md-0">
-                            Od kilku lat prowadzeniem schroniska zajmuje się Krakowskie Towarzystwo Opieki nad
-                            Zwierzętami.
-                            Wspólnym wysiłkiem KTOZ i gminy udało się w przeciągu kilku ostatnich lat doprowadzić do
-                            sytuacji w
-                            której krakowskie Schronisko jest uważane za jedną z najlepiej prowadzonych placówek tego
-                            typu w
-                            Polsce.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row py-3">
-                <div class="col-12 col-md-6 d-md-block d-flex justify-content-center" data-aos="fade-right">
-                    <img class="img-fluid rounded float-right about-us-img" src='{% static "img/about-us3.jpg" %}'
-                         alt="Dzięwczynka głaszczy psa">
-                </div>
-                <div class="col-12 col-md-6 d-flex align-items-center" data-aos="fade-left">
-                    <div class="container">
-                        <p class="text-body mb-0 mt-3 mt-md-0">
-                            Schronisko dla Bezdomnych Zwierząt jest utrzymywane przede wszystkim z pieniędzy
-                            przekazywanych
-                            przez
-                            Miasto Kraków. Ponadto wspomagane jest ze środków zgromadzonych przez Krakowskie Towarzystwo
-                            Opieki
-                            nad Zwierzętami w Krakowie oraz hojnych darów mieszkańców Krakowa.
-                        </p>
+                <div class="col-12 col-lg-6 w-100 h-100 rounded d-flex justify-content-center align-items-center">
+                    <div class="row overflow-hidden">
+                        <div class="col-12 col-sm-4 d-flex px-0 align-items-center justify-content-center"><span
+                                class="count count-number">{{ adopted_animals.count }}</span></div>
+                        <div class="count-text col-12 col-sm-8 px-0 d-flex align-items-center justify-content-center pl-3">
+                            <h3 class="h-like-sm text-center text-sm-left">Zwierzaków
+                                znalazło nowy dom.</h3></div>
                     </div>
                 </div>
             </div>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2562.1672619934157!2d19.880565515407323!3d50.04569792432762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165c7591ea92d9%3A0xe5a551f2f872ab1!2sSchronisko%20dla%20Bezdomnych%20Zwierz%C4%85t%20Krakowskie%20Towarzystwo%20Opieki%20nad%20Zwierz%C4%99tami!5e0!3m2!1spl!2spl!4v1601469576390!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
     </section>
+    <section id="events" class="events bg-dark py-5">
+        <div class="carousel-wrapper w-100">
+            <div class="container-lg container-fluid w-100 d-flex justify-content-center position-relative px-0 px-lg-auto">
+                <a class="carousel-control-prev d-none d-md-flex pl-3 pl-md-0" href="#eventsCarousel"
+                   role="button"
+                   data-slide="prev">
+                    <span class="carousel-control-next-icon"
+                          aria-hidden="true">{% fa5_icon 'arrow-circle-left' 'fas' size='fa-4x' color='#FFA500' %}</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <div id="eventsCarousel" class="carousel slide w-75" data-ride="carousel" data-touch="true">
+                    <ol class="carousel-indicators">
+                        <li data-target="#eventsCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#eventsCarousel" data-slide-to="1"></li>
+                        <li data-target="#eventsCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="#">
+                                <div class="carousel-img w-100"
+                                     style="background-image: url('{% static 'img/carousel-1.jpg' %}');"></div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="#">
+                                <div class="carousel-img w-100"
+                                     style="background-image: url('{% static 'img/carousel-2.jpg' %}');"></div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="#">
+                                <div class="carousel-img w-100"
+                                     style="background-image: url('{% static 'img/carousel-3.jpg' %}');"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-next d-none d-md-flex pr-3 pr-md-0" href="#eventsCarousel"
+                   role="button"
+                   data-slide="next">
+                    <span class="carousel-control-next-icon"
+                          aria-hidden="true">{% fa5_icon 'arrow-circle-right' 'fas' size='fa-4x' color='#FFA500' %}</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="home-tabs py-5 bg-primary border-bottom border-secondary">
+        <div class="container px-0">
+            <div class="nav nav-pills bg-secondary d-flex flex-column flex-lg-row justify-content-center pr-0 mb-2 "
+                 id="tabs" role="tablist" aria-orientation="vertical">
+                <a class="h-like-md nav-link active py-3 text-decoration-none text-uppercase h-100 d-flex justify-content-center align-items-center"
+                   id="home-about-tab" data-toggle="pill" href="#about-tab" role="tab"
+                   aria-controls="home-about" aria-selected="true">o Schronisku</a>
+                <a class="h-like-md nav-link py-3 text-decoration-none text-uppercase h-100 d-flex justify-content-center align-items-center"
+                   id="home-gallery-tab" data-toggle="pill" href="#gallery-tab" role="tab"
+                   aria-controls="home-gallery" aria-selected="false">Galeria</a>
+                <a class="h-like-md nav-link py-3 text-decoration-none text-uppercase h-100 d-flex justify-content-center align-items-center"
+                   id="home-contact-tab" data-toggle="pill" href="#contact-tab" role="tab"
+                   aria-controls="home-contact" aria-selected="false">Kontakt</a>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="about-tab" role="tabpanel"
+                 aria-labelledby="about-tab">
+                <div class="container-fluid container-md bg-primary py-5">
+                    <div class="row">
+                        <div class="col d-none d-md-block"></div>
+                        <div class="col-12 col-md-10 about-content ">
+                            <p>Szanowni Państwo,<br/>
 
+                                W naszym schronisku znajduje się wiele spragnionych uczucia i domu psów i kotów ,
+                                które
+                                z utęsknieniem czkają na ludzi chcących dać im prawdziwy dom i opiekę. W schronisku
+                                przebywa przeciętnie około 200-300 psów i 100- 300 (w zależności od pory roku) kotów
+                                różnych ras i wielkości.
+                            </p>
+                            <p class="font-weight-bold">
+                                Schronisko dla Bezdomnych Zwierząt przyjmuje zwierzęta przez całą dobę, a wydaje
+                                nowym
+                                opiekunom w godzinach 10.00 - 14.00 i 15.00 - 17.00 przez wszystkie dni tygodnia (w
+                                niedziele i święta także)
+                            </p>
+                            <p>
+                                Schronisko dla Bezdomnych Zwierząt powstało w 1994 roku. Zostało zbudowane ze
+                                środków
+                                Gminy Miasta Krakowa oraz Krakowskiego Towarzystwa Opieki nad Zwierzętami.
+                            </p>
+                            <p>
+                                Ten szczególny obiekt zabezpiecza zgodnie z Ustawą z dnia 13 września 1996 r. - o
+                                utrzymaniu czystości i porządku w gminach, miejsce pobytu zwierzętom pozostawionym
+                                bez
+                                dozoru oraz organizuje ochronę przed bezdomnymi zwierzętami. Prowadzenie schroniska
+                                dla
+                                bezdomnych zwierząt jako zadanie własne gminy wynika z realizacji zapisu art. 11 ust
+                                1
+                                Ustawy z dnia 21 sierpnia 1997 r. - o ochronie zwierząt.
+                            </p>
+                            <p>
+                                Od kilku lat prowadzeniem schroniska zajmuje się <a href="#events"
+                                                                                    class="tab-link">Krakowskie
+                                Towarzystwo Opieki nad
+                                Zwierzętami</a>. Wspólnym wysiłkiem KTOZ i gminy udało się w przeciągu kilku
+                                ostatnich
+                                lat
+                                doprowadzić do sytuacji w której krakowskie Schronisko jest uważane za jedną z
+                                najlepiej
+                                prowadzonych placówek tego typu w Polsce.
+                            </p>
+                        </div>
+                        <div class="col d-none d-md-block"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="gallery-tab" role="tabpanel" aria-labelledby="gallery-tab">
+                <div class="container-fluid container-md py-5">
+                    <div class="row">
+                        <div class="col d-none d-md-block"></div>
+                        <div class="col-12 col-md-10">
+                            <div class="gallery-list row d-flex justify-content-lg-start">
+                                {% for i in shelter_gallery.photos.all %}
+                                    <div class="gallery-item col-6 col-md-4 col-lg-3 justify-content-center justify-content-md-start my-3">
+                                        <a data-fancybox="gallery" href="{{ i.photo.url }}">
+                                            <div class="img-container rounded"
+                                                 style="background-image: url('{{ i.photo.url }}')">
+                                                <div class="overlay rounded"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col d-none d-md-block"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="contact-tab" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="container-fluid container-md py-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col d-none d-md-block"></div>
+                        <div class="col-12 col-sm-11 col-md-5 mb-4 mb-md-auto">
+                            <div class="map-responsive">
+                                <iframe class="rounded"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2562.1672619934157!2d19.880565515407323!3d50.04569792432762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165c7591ea92d9%3A0xe5a551f2f872ab1!2sSchronisko%20dla%20Bezdomnych%20Zwierz%C4%85t%20Krakowskie%20Towarzystwo%20Opieki%20nad%20Zwierz%C4%99tami!5e0!3m2!1spl!2spl!4v1602001072902!5m2!1spl!2spl"
+                                        width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                                        aria-hidden="false" tabindex="0"></iframe>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-11 col-md-5">
+                            <h5>SCHRONISKO DLA BEZDOMNYCH ZWIERZĄT
+                                prowadzone przez Krakowskie Towarzystwo Opieki nad Zwierzętami</h5>
+                            <p>ul.Rybna 3, 30-254 KRAKÓW</p>
+                            <p>tel./fax: 12 429-74-72 , 12 429-92-41</p>
+                            <p>e-mail: <a class="tab-link" href="mailto:biuro@schronisko.krakow.pl">biuro@schronisko.krakow.pl</a>
+                            </p>
+                        </div>
+                        <div class="col d-none d-md-block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="partners py-5">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+            <h4 class="h-like-lg">Nasi Sponsorzy</h4>
+            <p class="partners-p-like text-center">Firmy i organizacje dzięki którym jesteśmy w stanie kontynuować naszą
+                misję.</p>
+            <div class="partners-box py-5 row d-flex justify-content-center">
+                <div data-aos-once="true" data-aos="flip-right"
+                     class="col-12 col-md-6 py-3 partners-items w-50 d-flex justify-content-center align-items-center py-2 px-2">
+                    <img
+                            class="img-fluid w-50"
+                            src="{% static 'img/partner1.jpg' %}" alt="partner's logo"></div>
+                <div data-aos-once="true" data-aos="flip-right"
+                     class="col-12 col-md-6 py-3 partners-items w-50 d-flex justify-content-center align-items-center py-2 px-2">
+                    <img
+                            class="img-fluid w-50"
+                            src="{% static 'img/partner2.jpg' %}" alt="partner's logo"></div>
+                <div data-aos-once="true" data-aos="flip-left"
+                     class="col-12 col-md-6 py-3 partners-items w-50 d-flex justify-content-center align-items-center py-2 px-2">
+                    <img
+                            class="img-fluid w-50"
+                            src="{% static 'img/partner4.jpg' %}" alt="partner's logo"></div>
+                <div data-aos-once="true" data-aos="flip-left"
+                     class="col-12 col-md-6 py-3 partners-items w-50 d-flex justify-content-center align-items-center py-2 px-2">
+                    <img
+                            class="img-fluid w-50"
+                            src="{% static 'img/partner3.jpg' %}" alt="partner's logo"></div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
