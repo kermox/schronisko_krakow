@@ -12,4 +12,13 @@
     }
     font-weight: 300;
   }
+
+  .empty-topic {
+    height: 300px;
+
+    &-text {
+      color: $secondary;
+      background-color: $bg-dark;
+    }
+  }
 }
