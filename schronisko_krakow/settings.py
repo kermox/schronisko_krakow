@@ -132,9 +132,9 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_LOGIN')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_USE_TLS = True
 
-#CELERY
+# CELERY
 
-CELERY_BROKER_URL = 'redis://h:p4173be072d2d73b0a72fc54d371725c6f4c7b75ccbfddcb34537b22bf5e21f50@ec2-54-195-192-235.eu-west-1.compute.amazonaws.com:20229'
+CELERY_BROKER_URL = 'redis://h:p4173be072d2d73b0a72fc54d371725c6f4c7b75ccbfddcb34537b22bf5e21f50@ec2-54-155-30-149.eu-west-1.compute.amazonaws.com:21369'
 
 accept_content = ['json']
 
