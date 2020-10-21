@@ -28,7 +28,7 @@ GENDER_CHOICES = [
 class SearchAnimalForm(forms.ModelForm):
     class Meta:
         model = Animal
-        fields = ('species', 'size', 'identification_number', 'chip_number', 'name')
+        fields = ('species', 'size', 'identification_number', 'chip_number', 'name', 'age', 'gender')
         widgets = {
             'species': forms.RadioSelect(),
             'size': forms.CharField(),
@@ -56,4 +56,8 @@ class SearchAnimalForm(forms.ModelForm):
         required=False,
         widget=forms.RadioSelect(),
     )
-
+    gender = forms.ChoiceField(
+        choices=GENDER_CHOICES,
+        required=False,
+        widget=forms.RadioSelect(),
+    )
