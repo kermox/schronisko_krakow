@@ -19,20 +19,22 @@
                     <footer class="blockquote-footer">Roger Caras</footer>
                 </blockquote>
                 <button type="button"
-                        class="search-animals-button btn animate__animated animate__tada animate__delay-1s py-2 px-4 d-flex justify-content-center align-items-center"
-                        data-toggle="modal" data-target="#exampleModal">
+                        class="search-animals-button btn d-flex justify-content-center align-items-center py-2 px-4 animate__animated animate__tada animate__delay-1s "
+                        data-toggle="modal" data-target="#searchModal">
                     {% fa5_icon "search" size='fa-2x' color='white' %} <span class="ml-2">Wyszukaj</span>
                 </button>
             </div>
         </div>
-        <div class="container">
-            <div class="animal-cards py-3">
-                <div class="row">
+        <div class="animal-cards container">
+            {% if animal_list %}
+                <div class="row py-3">
                     {% for i in page_obj %}
                         <div class="col-12 col-md-6 col-lg-4 px-3 py-3">
-                            <a href="{% url 'animal-detail' i.slug %}" class="animal-card-link text-decoration-none">
+                            <a href="{% url 'animal-detail' i.slug %}"
+                               class="animal-card-link text-decoration-none">
                                 <div class="card d-flex align-items-center">
-                                    <img class="card-img-top" src="{{ i.photo.url }}" alt="Fotografia zwierzaka">
+                                    <img class="card-img-top" src="{{ i.photo.url }}"
+                                         alt="Fotografia zwierzaka">
                                     <div class="card-body w-100">
                                         <div class="card-body-overlay"></div>
                                         <div class="card-header-container d-flex justify-content-start">
@@ -48,7 +50,8 @@
                                         </div>
                                         <p class="card-text truncate">{{ i.additional_information }}</p>
                                     </div>
-                                    <button type="button" class="btn btn-primary w-75 mt-2 py-2">Więcej..</button>
+                                    <button type="button" class="card-btn btn btn-primary w-75 mt-2 py-2">Więcej..
+                                    </button>
                                 </div>
                             </a>
                         </div>
