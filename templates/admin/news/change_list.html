@@ -3,8 +3,8 @@
 
 {% block filters %}
     {{ block.super }}
-    <form action="{% url 'update-posts' %}" method="post">
+    <form action="{% url 'news-update' %}" method="post">
         {% csrf_token %}
-        <input type="submit" value="get facebook posts"></input>
+        <input type="submit" value="get facebook posts"/>
     </form>
 {% endblock %}
