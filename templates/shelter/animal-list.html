@@ -38,11 +38,11 @@
                                         <div class="card-header-container d-flex justify-content-start">
                                             <h5 class="card-title px-1 py-1">
                                                 {% if i.age > 4 %}
-                                                    {{ i.name }} / {{ i.age }} lat
+                                                    {{ i.name|upper }} / {{ i.age }} lat
                                                 {% elif i.age == 1 %}
-                                                    {{ i.name }} / {{ i.age }} roczek
+                                                    {{ i.name|upper }} / {{ i.age }} roczek
                                                 {% elif i.age < 5 %}
-                                                    {{ i.name }} / {{ i.age }} lata
+                                                    {{ i.name|upper }} / {{ i.age }} lata
                                                 {% endif %}
                                             </h5>
                                         </div>
