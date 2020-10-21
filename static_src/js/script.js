@@ -105,15 +105,24 @@ $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
 })
 
-$(document).ready(function () {
-    $(".dropdown-toggle").dropdown();
-});
+// Facebook embed responsive handling
+// Add events to listen to screen width change
+if (matchMedia) {
+    const mq = window.matchMedia("(min-width: 600px)");
+    const mq2 = window.matchMedia("(min-width: 501px")
+    mq.addEventListener("change", WidthChange);
+    mq2.addEventListener("change", WidthChange);
+    WidthChange(mq, mq2);
+}
 
-$(function () {
-    let pathName = document.location.pathname;
-    window.onbeforeunload = function () {
-        let scrollPosition = $(document).scrollTop();
-        sessionStorage.setItem("scrollPosition_" + pathName, scrollPosition.toString());
+// Set attributes depending on media query change (needs page reload)
+function WidthChange(mq, mq2) {
+    if (mq.matches) {
+        $('.fb-post').attr('data-width', "550")
+    } else if (mq2.matches) {
+        $('.fb-post').attr('data-width', "450")
+    } else {
+        $('.fb-post').attr({'data-width': "340", 'style': 'overflow-x: scroll;'})
     }
     if (sessionStorage["scrollPosition_" + pathName]) {
         $(document).scrollTop(sessionStorage.getItem("scrollPosition_" + pathName));
