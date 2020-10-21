@@ -31,6 +31,20 @@ class PostDetailView(DetailView):
     }
 
 
+class TopicDetailView(DetailView):
+    model = Topic
+    template_name = 'news/news-topic-detail.html'
+    context_object_name = 'topic'
+
+    def get_context_data(self, **kwargs):
+        context = super(TopicDetailView, self).get_context_data()
+        context['topic_page'] = 'active'
+        context['topic_list'] = Topic.objects.all()
+        context['topic_post_list'] = sorted(self.get_object(queryset=None).post_set.all(), key=operator.attrgetter(
+                                                                                 'pinned', 'created_at'), reverse=True)
+        return context
+
+
 def update_facebook_posts(request):
     if request.method == "POST":
         from utils.facebook_posts import get_facebook_posts
