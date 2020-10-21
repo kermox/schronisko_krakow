@@ -117,4 +117,4 @@ def pre_save_receiver(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(pre_save_receiver, sender=Post)
-
+pre_save.connect(pre_save_receiver, sender=Topic)
