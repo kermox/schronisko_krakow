@@ -4,5 +4,5 @@ from .models import EmailBase
 
 class EmailForm(forms.ModelForm):
     class Meta:
-        model = EmailBase
-        fields = ["email_address"]
+        model = EmailAddress
+        fields = ["address"]
