@@ -64,7 +64,12 @@ class Post(TimeStampMixin, models.Model):
         default=False,
         verbose_name='przypięty post'
     )
-
+    topic = models.ForeignKey(
+        Topic,
+        null=True,
+        on_delete=models.CASCADE,
+        verbose_name='wątek'
+    )
 
     def __str__(self):
         return f'{self.title}'
