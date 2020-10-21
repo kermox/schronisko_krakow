@@ -3,23 +3,23 @@
 {% load fontawesome_5 %}
 {% load static %}
 {% block content %}
+    <header class="header-video">
+        <div class="overlay"></div>
+        <video playsinline autoplay loop muted preload="metadata">
+            {% if animal.species == 'cat' %}
+                <source src="{% static 'video/cat.mp4' %}" type="video/mp4">
+            {% else %}
+                <source src="{% static 'video/dog.mp4' %}" type="video/mp4">
+            {% endif %}
+        </video>
+    </header>
     <section class="animal-details">
-        <header class="header-video mb-5">
-            <div class="overlay"></div>
-            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-                {% if animal.species == 'cat' %}
-                    <source src="{% static 'video/cat.mp4' %}" type="video/mp4">
-                {% else %}
-                    <source src="{% static 'video/dog.mp4' %}" type="video/mp4">
-                {% endif %}
-            </video>
-        </header>
-        <div class="header-text d-flex justify-content-center w-100">
-            <h1 class="display-1 px-3 py-3">{{ animal.name }}</h1>
+        <div class="header-text-video d-flex w-100 justify-content-center">
+            <h1 class="h-like-xlg mt-0 px-3 py-3">{{ animal.name|upper }}</h1>
         </div>
         <div class="container">
             <div class="description">
-                <div class="card mb-3 mt-5 w-100">
+                <div class="card mb-4 mt-5 w-100">
                     <div class="row no-gutters">
                         <div class="col-md-4 d-flex align-items-center">
                             <img class="card-img img-fluid" src="{{ animal.photo.url }}"
@@ -76,24 +76,5 @@
             </div>
         </div>
     </section>
-{% endblock %}
-{% block email %}
-    <section class="email bg-primary py-5 mt-5">
-        <div class="container">
-            <div class="subscribe nav-bg-dark rounded py-5 px-3 d-flex flex-column justify-content-center align-items-center" data-aos="zoom-in" >
-                {% if flash_message %}
-                    <h2>Dziękujemy!</h2>
-                    <p>Teraz możesz sprawdzić swoją skrzynkę.</p>
-                {% else %}
-                    <h2 class="mb-3">Spodobał się <span>{{ animal.name }}</span>?</h2>
-                    <p>Wpisz poniżej swój adres e-mail, a wyślemy Ci wszystkie informacje niezbędne do adopcji.</p>
-                    <form method="POST" class="d-flex">
-                        {% csrf_token %}
-                        {% render_field form.email_address name="email" class="email-input w-100 py-2 px-2 mr-3" placeholder="e-mail" %}
-                        <input type="submit" class="btn btn-outline-secondary">
-                    </form>
-                {% endif %}
-            </div>
-        </div>
-    </section>
+    {% include 'mails/subscribe.html' %}
 {% endblock %}
