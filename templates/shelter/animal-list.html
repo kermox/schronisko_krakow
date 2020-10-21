@@ -83,26 +83,14 @@
                         </div>
                     {% endfor %}
                 </div>
-            </div>
-        </div>
-        <div class="pagination d-flex justify-content-center mt-3 mb-5">
-            {% if is_paginated %}
-                {% if page_obj.has_previous %}
-                    <a href="?page=1"
-                       class="btn btn-outline-secondary mx-1">{% fa5_icon 'angle-double-left' %}</a>
-                {% endif %}
-                {% for num in page_obj.paginator.page_range %}
-                    {% if page_obj.number == num %}
-                        <a href="?page={{ num }}" class="btn btn-secondary mx-1">{{ num }}</a>
-                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                        <a href="?page={{ num }}" class="btn btn-outline-secondary mx-1">{{ num }}</a>
-                    {% endif %}
-                {% endfor %}
-                {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.paginator.num_pages }}"
-                       class="btn btn-outline-secondary mx-1">{% fa5_icon 'angle-double-right' %}</a>
-                {% endif %}
+            {% else %}
+                <div class="w-100 empty-category d-flex justify-content-center align-items-end mb-5"
+                     style="background-image: url('{% static "img/empty-category-dog.jpg" %}');
+                             background-position: center; background-size: contain; background-repeat: no-repeat">
+                    <h3 class="empty-category-text text-center py-2 px-2 d-inline">Nic nie znalazłem..</h3>
+                </div>
             {% endif %}
         </div>
+        {% include 'includes/pagination.html' %}
     </section>
 {% endblock %}
