@@ -34,51 +34,54 @@
                 <rect id="KTOZ-logo-stopka" width="174" height="161" fill="url(#pattern)"></rect>
             </svg>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        <button class="navbar-toggler d-flex flex-column justify-content-center align-items-center"
+                type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-element"></span>
+            <span class="navbar-toggler-element"></span>
+            <span class="navbar-toggler-element"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav text-uppercase ml-auto">
-                <li class="nav-item {{ home_page }}">
-                    <a class="nav-link" href="{% url 'home' %}"><span class="text-nowrap">Strona główna<span/></a>
+                <li class="nav-item py-3 py-lg-0 text-center {{ home_page }}">
+                    <a class="nav-link" href="{% url 'home' %}"><span class="text-nowrap">Strona główna</span></a>
                 </li>
-                <li class="nav-item {{ post_list_page }} {{ post_detail_page }}">
-                    <a class="nav-link" href="{% url 'post-list' %}">Aktualności</a>
+                <li class="nav-item py-3 py-lg-0 text-center {{ post_list_page }} {{ post_detail_page }}">
+                    <a class="nav-link" href="{% url 'news-list' %}">Aktualności</a>
                 </li>
-                <li class="nav-item dropdown {{ animal_list_page }}{{ animal_detail_page }}">
+                <li class="nav-item py-3 py-lg-0 text-center dropdown {{ animal_list_page }}{{ animal_detail_page }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         Adoptuj
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-capitalize" href="{% url 'animal-list' %}">Adopcje</a>
-                        <a class="dropdown-item text-capitalize" href="#">Adopcje na odległość</a>
+                        <a class="dropdown-item py-3 py-md-1 text-uppercase" href="{% url 'animal-list' %}">Adopcje</a>
+                        <a class="dropdown-item py-3 py-md-1 text-uppercase" href="#">Adopcje na odległość</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" aria-disabled="true">Galeria</a>
+                <li class="nav-item py-3 py-lg-0 text-center">
+                    <a class="nav-link external-tab-link" href="{% url 'home' %}#gallery-tab" aria-disabled="true">Galeria</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item py-3 py-lg-0 text-center dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         Pomoc
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-capitalize" href="#">Zapunktuj pomocą</a>
-                        <a class="dropdown-item text-capitalize" href="#">1% Podatku</a>
-                        <a class="dropdown-item text-capitalize" href="#">Wolontariusz</a>
+                        <a class="dropdown-item py-3 py-md-1 text-uppercase" href="#">Zapunktuj pomocą</a>
+                        <a class="dropdown-item py-3 py-md-1 text-uppercase" href="#">1% Podatku</a>
+                        <a class="dropdown-item py-3 py-md-1 text-uppercase" href="#">Wolontariusz</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link mr-sm-2" href="#">Kontakt <span class="sr-only">(current)</span></a>
+                <li class="nav-item py-3 py-lg-0 text-center">
+                    <a class="nav-link external-tab-link mr-sm-2" href="{% url 'home' %}#contact-tab">Kontakt <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="empty"></li>
             </ul>
-            <div class="collapse-trick-close"></div>
-
         </div>
     </div>
 </nav>
