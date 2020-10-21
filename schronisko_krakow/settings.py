@@ -34,16 +34,19 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'fontawesome_5',
     'news.apps.NewsConfig',
     'shelter.apps.ShelterConfig',
     'widget_tweaks',
     'mails',
+    'whitenoise',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -150,6 +153,10 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
+
+STATICFILES_STORAGE = 'schronisko_krakow.storage.WhiteNoiseStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_src')
+
 
 MEDIA_URL = '/mediafiles/'
 
