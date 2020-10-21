@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% block content %}
+    <section class="news-list {% block news-background %}bg-primary{% endblock %}">
+        <header class="header-img d-flex align-items-end justify-content-center"
+                style="background-image: url('{% static 'img/news-background.jpg' %}');">
+            <div class="header-text w-100 d-flex justify-content-center">
+                <h1 class="h-like-xlg mt-0 px-3 py-3">Aktualności</h1>
+            </div>
+        </header>
+        <div class="container-fluid container-md">
+            <div class="row mt-5 pt-3">
+                {% block aside %}
+                    <aside class="col-12 col-lg-3 pt-5 px-5 px-md-0">
+                        <ul class="list-group pl-0">
+                            <li class="list-group-item py-0">
+                                <a href="{% url 'news-list' %}"
+                                   class="{{ post_list_page }} text-decoration-none text-center text-lg-left text-uppercase py-3">
+                                    aktualności
+                                </a>
+                            </li>
+                            {% for i in topic_list %}
+                                <li class="list-group-item py-0">
+                                    <a href="{% url 'news-topic-detail' i.slug %}"
+                                       class="
+                                       {% if i.slug == topic.slug%}
+                                       {{ topic_page }}
+                                       {% endif %}
+                                       text-decoration-none text-center text-lg-left text-uppercase py-3">
+                                        {{ i.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </aside>
+                {% endblock %}
+                {% block article %}
+                    <article class="d-flex flex-column align-items-center col-12 col-lg-9 py-5 px-1 px-sm-4 px-md-5">
+                        {% for i in page_obj %}
+                            {% if not i.facebook_post_id %}
+                                <div class="card {% if i.pinned %} card-pinned {% endif %} w-100 mb-4">
+                                    {% if i.pinned %}
+                                        {% fa5_icon 'thumbtack' 'fas' class='thumbtack' size='fa-2x' %}
+                                    {% endif %}
+                                    {% if i.img %}
+                                        <img class="img-fluid card-img-top w-100" src="{{ i.img.url }}"
+                                             alt="Card image cap">
+                                    {% endif %}
+                                    <div class="card-body rounded bg-white w-100">
+                                        <h4 class="card-title h-like-sm pb-1">{{ i.title }}</h4>
+                                        <div class="divider bg-secondary w-100"></div>
+                                        <h6 class="card-subtitle small text-muted mt-3 mb-2">{{ i.date|date:'Y-m-d' }}</h6>
+                                        <p class="card-text">
+                                            {{ i.content|truncatechars:300 }}
+                                        </p>
+
+                                        <a href="{% url "news-detail" i.slug %}" class="btn btn-outline-secondary">Przejdź
+                                            do postu</a>
+
+                                    </div>
+                                </div>
+                            {% elif i.facebook_post_id %}
+                                <div class="fb-post-container {% if i.pinned %} pinned-card {% endif %} bg-white d-flex justify-content-center rounded w-100 mb-4">
+                                    <div class="fb-post bg-white my-4"
+                                         data-href="{{ i.facebook_permalink_url }}"
+                                         data-lazy="true"></div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </article>
+                {% endblock %}
+            </div>
+        </div>
+        {% include 'includes/pagination.html' %}
+    </section>
+{% endblock %}
