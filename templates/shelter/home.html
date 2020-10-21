@@ -2,10 +2,23 @@
 {% load fontawesome_5 %}
 {% load static %}
 {% block content %}
-    <header class="welcome d-flex flex-column justify-content-center align-items-center"
-            style="background-image: url('{% static 'img/main.png' %}');">
-        <h1 class="display-1">Potrzebuję Cię!</h1>
-        <h5>Jeżeli jesteś w stanie podarować zwierzakom dom - zrób to!</h5>
+    <header class="header-img welcome-header w-100 d-flex flex-column align-items-center justify-content-end"
+            style="background-image: url('{% static 'img/welcome-background.jpg' %}');  background-repeat: no-repeat;
+                    background-position: bottom;
+                    background-attachment: fixed;
+                    background-size: cover; height: 70vh;">
+        <div class="row w-100 h-100 pb-3 pb-lg-0 d-flex flex-column justify-content-center align-items-start">
+            <div class="container-md container-fluid">
+                <div class="col mt-5">
+                    <h1 class="text-center h-like-lg text-md-left mb-3">Potrzebuję Cię!</h1>
+                    <h5 class="text-center h-like-small text-md-left p-0">A Ty zapewnie mnie też.</h5>
+
+                    <div class="d-flex justify-content-center justify-content-md-start"><a href="#"
+                                                                                           class="action-btn btn btn-outline-secondary btn-lg mt-3 px-5">Adoptuj</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
     <section class="numbers bg-primary py-5">
         <div class="container-fluid container-md">
