@@ -94,16 +94,13 @@ window.addEventListener("scroll", function () {
     }
 })
 
+// Handling navigation open and close classes on small and medium devices
 let openNavigation = $('.navbar-toggler')
 openNavigation.click(function () {
     $('body').toggleClass("overflow-hidden")
-    $('nav').toggleClass('nav-bg-dark')
-    $('.collapse-trick-close').toggleClass('collapse-trick-open')
+    $('nav').toggleClass('bg-dark')
 })
 
-$('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-})
 
 // Facebook embed responsive handling
 // Add events to listen to screen width change
@@ -124,16 +121,5 @@ function WidthChange(mq, mq2) {
     } else {
         $('.fb-post').attr({'data-width': "340", 'style': 'overflow-x: scroll;'})
     }
-    if (sessionStorage["scrollPosition_" + pathName]) {
-        $(document).scrollTop(sessionStorage.getItem("scrollPosition_" + pathName));
-    }
-});
-// let position= $(window).scrollTop();
-//
-// //some things here
-//
-// $(window).scrollTop(position);
+}
 
-AOS.init({
-    once: true
-});
