@@ -8,17 +8,25 @@ from django.views.generic import ListView, DetailView
 from .models import Post, FacebookPost
 
 
-class PostListView(ListView):
+class NewsListView(ListView):
     model = Post
-    template_name = 'posts/post-list.html'
-    paginate_by = 10
+    template_name = 'news/news-list.html'
+    paginate_by = 8
     extra_context = {
         'post_list_page': 'active'
     }
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(NewsListView, self).get_context_data(object_list=self.get_queryset())
+        context['topic_list'] = Topic.objects.all()
+        return context
+
     def get_queryset(self):
-        sorted_combined_list = sorted(chain(Post.objects.filter(status='published'), FacebookPost.objects.filter(status='published')), key=operator.attrgetter('created_at'), reverse=True)
-        return sorted_combined_list
+        super(NewsListView, self).get_queryset()
+        queryset = sorted(chain(Post.objects.filter(status='published', topic=None),
+                                FacebookPost.objects.filter(status='published')),
+                          key=operator.attrgetter('pinned', 'created_at'), reverse=True)
+        return queryset
 
 
 class PostDetailView(DetailView):
