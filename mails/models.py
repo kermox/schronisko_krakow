@@ -1,3 +1,4 @@
+from django.core.validators import EmailValidator
 from django.db import models
 
 from utils.utils import TimeStampMixin
@@ -21,7 +22,7 @@ class EmailTemplate(models.Model):
         verbose_name_plural = 'Templates'
 
     def __str__(self):
-        return self.email_body[0:20]
+        return f"Subscribe Email Template - {self.title[:20].title()}"
 
 
 class EmailAddress(TimeStampMixin, models.Model):
@@ -36,4 +37,4 @@ class EmailAddress(TimeStampMixin, models.Model):
         verbose_name_plural = 'Addresses'
 
     def __str__(self):
-        return self.email_address
+        return self.address

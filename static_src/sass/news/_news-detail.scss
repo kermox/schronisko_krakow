@@ -1,12 +1,12 @@
-.post-details {
+.news-detail {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 
-
   .container {
     min-height: 100vh;
-    .post-container {
+
+    .post {
       width: 50%;
       margin: 190px 0 0 0;
       background-color: white;
@@ -17,16 +17,17 @@
       0 41.8px 33.4px rgba(0, 0, 0, 0.086),
       0 100px 80px rgba(0, 0, 0, 0.12);
     }
+
     .btn {
       margin-bottom: 170px;
     }
   }
 }
 
-@include media-breakpoint-down(md){
-  .post-details{
-    .container{
-      .post-container{
+@include media-breakpoint-down(md) {
+  .news-detail {
+    .container {
+      .post {
         width: 100%;
       }
     }

@@ -3,9 +3,9 @@ from itertools import chain
 
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView, ListView
 
-from .models import Post, FacebookPost
+from .models import FacebookPost, Post, Topic
 
 
 class NewsListView(ListView):
@@ -29,13 +29,12 @@ class NewsListView(ListView):
         return queryset
 
 
-class PostDetailView(DetailView):
+class NewsDetailView(DetailView):
     model = Post
-    template_name = 'posts/post-details.html'
+    template_name = 'news/news-detail.html'
     context_object_name = 'post'
     extra_context = {
         'post_detail_page': 'active'
-
     }
 
 

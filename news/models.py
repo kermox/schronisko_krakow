@@ -1,7 +1,7 @@
-from utils.utils import unique_slug_generator
 from django.db import models
 from django.db.models.signals import pre_save
 
+from utils.utils import unique_slug_generator, TimeStampMixin
 
 STATUS_CHOICES = (
     ('draft', 'Szkic'),
@@ -26,7 +26,6 @@ class Topic(models.Model):
 
 
 class Post(TimeStampMixin, models.Model):
-
     title = models.CharField(
         max_length=200,
         verbose_name='tytuł',
@@ -34,12 +33,12 @@ class Post(TimeStampMixin, models.Model):
     )
     date = models.DateField(
         auto_now=True,
-        verbose_name='data',
         help_text='',
+        verbose_name='data',
     )
     content = models.TextField(
-        verbose_name='treść',
         help_text='',
+        verbose_name='treść',
     )
     slug = models.SlugField(
         max_length=250,
@@ -48,7 +47,7 @@ class Post(TimeStampMixin, models.Model):
     )
     img = models.ImageField(
         blank=True,
-        upload_to='posts/',
+        upload_to='news/',
         verbose_name='obrazek',
     )
     status = models.CharField(
@@ -72,12 +71,10 @@ class Post(TimeStampMixin, models.Model):
     )
 
     def __str__(self):
-        return f'{self.title}'
+        return f'{self.title}'.title()
 
 
 class FacebookPost(TimeStampMixin, models.Model):
-
-    content = models.TextField(blank=True)
 
     facebook_post_id = models.CharField(
         max_length=250,
@@ -111,7 +108,7 @@ class FacebookPost(TimeStampMixin, models.Model):
         return f"FacebookPost: {self.facebook_post_id}"
 
 
-def pre_save_receiver(sender, instance, *args, **kwargs):
+def pre_save_receiver(instance, **kwargs):
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)
 

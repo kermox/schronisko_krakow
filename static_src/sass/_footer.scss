@@ -8,12 +8,10 @@
         color: $primary;
 
         &:hover {
-          color: $hover-background;
+          color: rgba(0,0,0,0.6);
           transition: color 0.3s;
         }
       }
     }
   }
-
-
 }

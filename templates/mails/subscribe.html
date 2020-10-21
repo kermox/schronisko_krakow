@@ -1,0 +1,34 @@
+{% load widget_tweaks %}
+{% load female_filter %}
+{% load static %}
+{% block email %}
+    <section class="subscribe bg-primary py-5 mt-5">
+        <div class="container">
+            <div class="subscribe-body rounded d-flex flex-column justify-content-center align-items-center py-5 px-3 aos-init"
+                 data-aos="zoom-in">
+                {% if flash_message %}
+                    <h2>Dziękujemy!</h2>
+                    <p>Teraz możesz sprawdzić swoją skrzynkę.</p>
+                {% else %}
+                    {% if animal %}
+                        <h2 class="mb-3">
+                            {% if animal.name|female_filter %}
+                                Spodobała Ci się
+                            {% else %}
+                                Spodobał Ci się
+                            {% endif %}
+                            <span>{{ animal.name|upper }}</span>?</h2>
+                    {% else %}
+                        <h2 class="mb-3">Zainteresowany adopcją?</h2>
+                    {% endif %}
+                    <p>Wpisz poniżej swój adres e-mail, a wyślemy Ci wszystkie informacje niezbędne do adopcji.</p>
+                    <form method="POST" class="d-flex">
+                        {% csrf_token %}
+                        {% render_field form.address name="email" class="email-input w-100 py-2 px-2 mr-0 mr-md-3" placeholder="e-mail" %}
+                        <input type="submit" value="Wyślij" class="btn btn-outline-secondary px-4 py-2">
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

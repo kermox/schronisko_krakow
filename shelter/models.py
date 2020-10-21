@@ -1,7 +1,9 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db.models.signals import pre_save
 from django.urls import reverse
-from utils.utils import unique_slug_generator
+
+from utils.utils import get_image_name, unique_slug_generator, TimeStampMixin
 
 
 class PetOwner(models.Model):
@@ -152,7 +154,7 @@ class Animal(TimeStampMixin, models.Model):
 
     )
     photo = models.ImageField(
-        upload_to='animal_photos/',
+        upload_to=get_image_name,
         verbose_name='zdjęcie',
     )
     adopted = models.BooleanField(
@@ -169,7 +171,10 @@ class Animal(TimeStampMixin, models.Model):
     )
 
     def __str__(self):
-        return f'{self.name} - {self.species} - {self.age} y.o. - #{self.chip_number}'
+        if not self.adopted:
+            return f'{self.name.upper()} - {self.get_species_display()} - Wiek: {self.age}'
+        else:
+            return f'{self.name.upper()} - Zaadaptowany przez: {self.adopted_by}'
 
     def get_absolute_url(self):
         return reverse('animal-detail', kwargs={"slug": self.slug})
@@ -178,13 +183,11 @@ class Animal(TimeStampMixin, models.Model):
 def pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)
+    if instance.adopted_by:
+        instance.adopted = True
 
 
 pre_save.connect(pre_save_receiver, sender=Animal)
-
-
-def get_image_name(instance, filename):
-    return f'animal_photos/{instance.animal.name}/{filename}'
 
 
 class AnimalGallery(models.Model):
@@ -192,10 +195,9 @@ class AnimalGallery(models.Model):
     photos = models.ImageField(upload_to=get_image_name,
                                verbose_name='zdjęcia')
 
-
     class Meta:
-        verbose_name="Galeria zdjęć"
-        verbose_name_plural="Galeria zdjęć"
+        verbose_name = "Galeria"
+        verbose_name_plural = "Galeria"
 
 
 class ShelterGallery(models.Model):

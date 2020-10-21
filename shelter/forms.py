@@ -1,4 +1,5 @@
 from django import forms
+
 from .models import Animal
 
 SPECIES_CHOICES = [

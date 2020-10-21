@@ -2,7 +2,9 @@ from celery import shared_task
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
-from .models import EmailTemplates
+from schronisko_krakow.settings import EMAIL_HOST_USER
+
+from .models import EmailTemplate
 
 
 @shared_task()

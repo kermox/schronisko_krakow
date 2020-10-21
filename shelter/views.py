@@ -1,18 +1,16 @@
 from django.http import QueryDict
 from django.urls import reverse
-
-from django.views.generic import TemplateView, DetailView, FormView, View
-from django.views.generic.list import ListView
-from django.views.generic.edit import FormMixin
+from django.views.generic import DetailView, FormView, TemplateView, View
 from django.views.generic.detail import SingleObjectMixin
-
-from .forms import SearchAnimalForm
-from .models import Animal
+from django.views.generic.edit import FormMixin
+from django.views.generic.list import ListView, MultipleObjectMixin
 
 from mails.forms import EmailForm
-from mails.models import EmailBase
+from mails.models import EmailAddress
 from mails.tasks import send_email
 
+from .forms import SearchAnimalForm
+from .models import Animal, ShelterGallery
 
 
 class HomePageView(TemplateView, MultipleObjectMixin):
@@ -84,15 +82,15 @@ class AnimalDetailPOST(SingleObjectMixin, FormView):
         self.object = self.get_object()
         form = self.get_form()
         if form.is_valid():
-            address = form.cleaned_data['email_address']
+            address = form.cleaned_data['address']
             send_email.delay(address)
             return self.form_valid(form)
         else:
             return self.form_class()
 
     def form_valid(self, form):
-        if form.cleaned_data['email_address'] \
-                and form.cleaned_data['email_address'] not in [i.email_address for i in EmailBase.objects.all()]:
+        if form.cleaned_data['address'] \
+                and form.cleaned_data['address'] not in [i.address for i in EmailAddress.objects.all()]:
             form.save()
         return super(AnimalDetailPOST, self).form_valid(form)
 

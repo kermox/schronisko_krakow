@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import PostListView, PostDetailView, update_facebook_posts
+
+from .views import (TopicDetailView, NewsDetailView, NewsListView,
+                    update_facebook_posts)
 
 urlpatterns = [
     path('', NewsListView.as_view(), name='news-list'),
