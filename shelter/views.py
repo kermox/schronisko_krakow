@@ -54,8 +54,21 @@ class AnimalListView(FormMixin, ListView):
         q = QueryDict(mutable=True)
         for key, value in data.items():
             if value != '' and key != 'page':
-                q.update({key: value})
-        animal = Animal.objects.filter(**q.dict()).order_by('name')
+                if key == 'age':
+                    if value == 0:
+                        q.update({f'{key}__lte': 1})
+                    elif value == 1:
+                        q.update({f'{key}__range': [1, 3]})
+                    elif value == 2:
+                        q.update({f'{key}__range': [3, 5]})
+                    elif value == 3:
+                        q.update({f'{key}__gte': 5})
+                    else:
+                        q.update({key: value})
+                else:
+                    q.update({key: value})
+
+        animal = Animal.objects.filter(**q.dict(), adopted=False).order_by('name')
         return animal
 
 
