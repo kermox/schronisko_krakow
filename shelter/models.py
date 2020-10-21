@@ -33,8 +33,7 @@ class PetOwner(models.Model):
         return f'{self.first_name} {self.second_name} - {self.email}'
 
 
-
-class Animal(models.Model):
+class Animal(TimeStampMixin, models.Model):
     name = models.CharField(
         max_length=50,
         verbose_name='imię',
