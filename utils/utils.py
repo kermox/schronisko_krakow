@@ -36,3 +36,16 @@ def unique_slug_generator(instance, new_slug=None):
 
         return unique_slug_generator(instance, new_slug=new_slug)
     return slug
+
+
+def get_image_name(instance, filename):
+    if instance.__class__.__name__ == 'Animal':
+        return f'animal_photos/{instance.name}/profile_photo/{filename}'
+    elif instance.__class__.__name__ == 'AnimalGallery':
+        return f'animal_photos/{instance.animal.name}/gallery/{filename}'
+    elif instance.__class__.__name__ == 'ShelterGalleryPhotos':
+        return f'shelter_photos/{filename}'
+    elif instance.__class__.__name__ == 'SideContent':
+        return f'news/{instance.category.name}/{filename}'
+    else:
+        return 'other_images/'
