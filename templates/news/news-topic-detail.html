@@ -1,0 +1,40 @@
+{% extends 'news/news-list.html' %}
+{% load static %}
+{% load fontawesome_5 %}
+{% block news-background %}
+    {% if topic_post.post_set.all %}
+        bg-primary
+    {% else %}
+        bg-white
+    {% endif %}
+{% endblock %}
+{% block article %}
+    <article class="topic-article d-flex flex-column align-items-center col-12 col-lg-9 py-5 px-1 px-sm-4 px-md-5">
+        {% if topic_post_list %}
+            {% for i in topic_post_list %}
+                <div class="card {% if i.pinned %} card-pinned {% endif %} w-100 mb-5">
+                    {% if i.pinned %}
+                        {% fa5_icon 'thumbtack' 'fas' class='thumbtack' size='fa-2x' %}
+                    {% endif %}
+                    <div class="card-body rounded bg-white w-100">
+                        {% if i.img %}
+                            <img class="img-fluid card-img-top w-100" src="{{ i.img.url }}"
+                                 alt="Card image cap">
+                        {% endif %}
+                        <h4 class="card-title text-capitalize text-center pb-1">{{ i.title }}</h4>
+                        <h6 class="card-subtitle small text-center text-muted mt-3 mb-2">{{ i.date|date:'Y-m-d' }}</h6>
+                        <p class="card-text mt-5">
+                            {{ i.content }}
+                        </p>
+
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="w-100 empty-topic" style="background-image: url('{% static "img/empty-category-dog.jpg" %}');
+                    background-position: center; background-size: 70%; background-repeat: no-repeat"></div>
+            <h3 class="empty-topic-text py-2 px-2">Ten wątek jest pusty..</h3>
+        {% endif %}
+    </article>
+{% endblock %}
+
