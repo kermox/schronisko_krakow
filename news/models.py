@@ -58,6 +58,13 @@ class Post(TimeStampMixin, models.Model):
         choices=STATUS_CHOICES,
         default='draft',
     )
+    pinned = models.BooleanField(
+        null=False,
+        blank=True,
+        default=False,
+        verbose_name='przypięty post'
+    )
+
 
     def __str__(self):
         return f'{self.title}'
@@ -83,6 +90,17 @@ class FacebookPost(TimeStampMixin, models.Model):
         choices=STATUS_CHOICES,
         default='draft',
     )
+
+    pinned = models.BooleanField(
+        null=False,
+        blank=True,
+        default=False,
+        verbose_name='przypięty post',
+    )
+
+    class Meta:
+        verbose_name = 'Facebook'
+        verbose_name_plural = 'Facebook'
 
     def __str__(self):
         return f"FacebookPost: {self.facebook_post_id}"
