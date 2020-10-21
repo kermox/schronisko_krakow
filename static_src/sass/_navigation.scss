@@ -19,9 +19,60 @@ nav {
       }
     }
 
-    .navbar-toggler {
-      outline: none;
+  .navbar-toggler {
+    width: 45px;
+    height: 45px;
+    border: none;
+    outline: none;
+    transition: all 0.2s;
+    @include media-breakpoint-up(lg) {
+      display: none !important;
     }
+
+    &-element {
+      width: 30px;
+      height: 0;
+      border: 1px solid #FFFFFF;
+      background-color: #FFFFFF;
+      transition: all 0.2s;
+      position: relative;
+
+      &:nth-child(1) {
+        top: -5px;
+      }
+
+      &:nth-child(2) {
+        top: 0;
+      }
+
+      &:nth-child(3) {
+        top: 5px;
+      }
+    }
+
+    &[aria-expanded='true'] {
+      transition: all 0.2s;
+
+      .navbar-toggler-element {
+        border: 1px solid $secondary;
+        transition: all 0.2s;
+      }
+
+      :nth-of-type(1) {
+        transform: rotate(45deg);
+        top: 2px;
+      }
+
+      :nth-of-type(2) {
+        opacity: 0;
+      }
+
+      :nth-of-type(3) {
+        transform: rotate(135deg);
+        top: -2px;
+      }
+    }
+  }
 
     .navbar-collapse {
       .collapse-trick-close {
