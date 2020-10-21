@@ -1,0 +1,59 @@
+.news-list {
+  aside {
+    ul {
+      position: sticky;
+      top: 150px;
+    }
+
+    li {
+      background-color: rgba(0, 0, 0, 0.9);
+      border: none;
+    }
+
+    a {
+      font-size: 16px;
+      color: $primary;
+      display: block;
+      width: inherit;
+
+      &.active {
+        color: $secondary;
+      }
+
+      &:hover {
+        color: $secondary;
+      }
+    }
+  }
+
+  article {
+    .card {
+      position: relative;
+      border: none;
+      outline: none;
+
+      &-pinned {
+        border: 2px solid $danger !important;
+      }
+    }
+
+    .thumbtack {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      transform: rotate(30deg);
+    }
+
+    .divider {
+      height: 1px;
+    }
+
+    .fb-post-container {
+      overflow-x: hidden;
+    }
+
+    .fb-post {
+      outline: 1px solid $secondary;
+    }
+  }
+}
