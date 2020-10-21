@@ -14,11 +14,29 @@ from mails.models import EmailBase
 from mails.tasks import send_email
 
 
-class HomePageView(TemplateView):
+
+class HomePageView(TemplateView, MultipleObjectMixin):
+    model = Animal
     template_name = 'shelter/home.html'
     extra_context = {
         'home_page': 'active'
     }
+    context_object_name = 'animals'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(HomePageView, self).get_context_data(object_list=self.get_queryset(), **kwargs)
+        context['adopted_animals'] = self.get_queryset().filter(adopted=True)
+        context['not_adopted_animals'] = self.get_queryset().filter(adopted=False)
+        context['shelter_gallery'] = ShelterGallery.objects.first()
+        return context
+
+    def get_queryset(self):
+        super(HomePageView, self).get_queryset()
+        queryset = Animal.objects.all()
+        return queryset
+
+
+
 
 
 class AnimalListView(FormMixin, ListView):
