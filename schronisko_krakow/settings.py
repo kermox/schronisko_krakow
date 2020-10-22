@@ -99,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 # variables for work with Facebook Graph API
-USER_ACCESS_TOKEN = 'EAACxy7HwWgsBANca7gg7H1q3CZAvuGqMhmGDKZCZANHDkVZAm1H2ron9dapZB0Hi8aTHRy1pYXN2I3bGIBhcPOZB7qoebZC3nmPkfvtuwIrahtzYIkUwZAEublqKw36vw1x4lJGsmGo6Bx0anwBpJbzndc09qhI0NN7Vr9evuIWBzUM67KQznk9U'
 
 USER_ACCESS_TOKEN = os.environ.get('USER_ACCESS_TOKEN')
 
