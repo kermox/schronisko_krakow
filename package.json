@@ -12,8 +12,8 @@
     "compile:css": "staticfiles/node_modules/.bin/node-sass -o ../static_compiled/css sass",
     "compile:css:watch": "staticfiles/node_modules/.bin/node-sass -o ../static_compiled/css sass --watch",
     "lint:css": "staticfiles/node_modules/.bin/sass-lint sass/** -v -q",
-    "postinstall": "cd staticfiles && npm install"
   },
+  "cacheDirectories": ["staticfiles/node_modules"],
   "author": "Maksym Garus",
   "license": "ISC",
   "dependencies": {
