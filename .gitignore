@@ -8,8 +8,6 @@ __pycache__/
 *.env
 env/
 
-node_modules/
-
 .idea/
 
 mediafiles/
