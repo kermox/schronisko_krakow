@@ -5,13 +5,13 @@
   "main": "index.js",
   "config": {
     "src_css": "sass",
-    "dest_css": "../static_compiled/css"
+    "dest_css": "static_compiled/css"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile:css": "node-sass -o ../static_compiled/css sass",
-    "compile:css:watch": "node-sass -o ../static_compiled/css sass --watch",
-    "lint:css": "sass-lint sass/** -v -q"
+    "compile:css": "static_src/node_modules/.bin/node-sass -o ../static_compiled/css sass",
+    "compile:css:watch": "static_src/node_modules/.bin/node-sass -o ../static_compiled/css sass --watch",
+    "lint:css": "static_src/node_modules/.bin/sass-lint sass/** -v -q"
   },
   "author": "Maksym Garus",
   "license": "ISC",
