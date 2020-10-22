@@ -137,16 +137,15 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_compiled"),
-    os.path.join(BASE_DIR),
-    # os.path.join(BASE_DIR, "static_src"),
 ]
+
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
 STATICFILES_STORAGE = 'schronisko_krakow.storage.WhiteNoiseStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_src')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 MEDIA_URL = '/mediafiles/'
@@ -164,5 +163,5 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 
-django_on_heroku.settings(locals(), staticfiles=False)
+django_on_heroku.settings(locals())
 

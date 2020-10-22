@@ -9,9 +9,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile:css": "static_src/node_modules/.bin/node-sass -o ../static_compiled/css sass",
-    "compile:css:watch": "static_src/node_modules/.bin/node-sass -o ../static_compiled/css sass --watch",
-    "lint:css": "static_src/node_modules/.bin/sass-lint sass/** -v -q"
+    "compile:css": "staticfiles/node_modules/.bin/node-sass -o ../static_compiled/css sass",
+    "compile:css:watch": "staticfiles/node_modules/.bin/node-sass -o ../static_compiled/css sass --watch",
+    "lint:css": "staticfiles/node_modules/.bin/sass-lint sass/** -v -q"
   },
   "author": "Maksym Garus",
   "license": "ISC",
