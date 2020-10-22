@@ -20,6 +20,7 @@ django-cors-headers==3.3.0
 django-environ==0.4.5
 django-filter==2.2.0
 django-fontawesome-5==1.0.18
+django-on-heroku==1.1.2
 django-storages==1.10.1
 django-widget-tweaks==1.4.8
 flake8==3.8.2
