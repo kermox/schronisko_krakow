@@ -1,0 +1,1 @@
+web: gunicorn schronisko_krakow.wsgi
