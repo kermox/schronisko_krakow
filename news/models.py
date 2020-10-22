@@ -66,6 +66,7 @@ class Post(TimeStampMixin, models.Model):
     topic = models.ForeignKey(
         Topic,
         null=True,
+        blank=True,
         on_delete=models.CASCADE,
         verbose_name='wątek'
     )
