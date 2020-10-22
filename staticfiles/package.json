@@ -1,0 +1,29 @@
+{
+  "name": "static_src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config": {
+    "src_css": "sass",
+    "dest_css": "static_compiled/css"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:css": "staticfiles/node_modules/.bin/node-sass -o ../static_compiled/css sass",
+    "compile:css:watch": "staticfiles/node_modules/.bin/node-sass -o ../static_compiled/css sass --watch",
+    "lint:css": "staticfiles/node_modules/.bin/sass-lint sass/** -v -q",
+  },
+  "author": "Maksym Garus",
+  "license": "ISC",
+  "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "micromodal": "^0.4.6",
+    "node-sass": "^4.14.1",
+    "popper.js": "^1.16.1",
+    "sass-lint": "^1.13.1"
+  }
+}
