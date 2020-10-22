@@ -19,12 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'yhy^8xmk@8z&e3&vs)hvv9a$2&08!cxymg@3p!*8*b*6^vb@7w'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG_VALUE")
 
-ALLOWED_HOSTS = ['192.168.0.10', 'localhost', '192.168.43.116', 'testserver', ]
+ALLOWED_HOSTS = ['https://schroniskokrakow.herokuapp.com/', ]
 
 # Application definition
 
@@ -134,8 +133,7 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_USE_TLS = True
 
 # CELERY
-
-CELERY_BROKER_URL = 'redis://h:p4173be072d2d73b0a72fc54d371725c6f4c7b75ccbfddcb34537b22bf5e21f50@ec2-54-155-30-149.eu-west-1.compute.amazonaws.com:21369'
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
 
 accept_content = ['json']
 
@@ -169,6 +167,5 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_REGION_NAME = 'us-east-2'
 AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
