@@ -137,7 +137,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_compiled"),
-    # os.path.join(BASE_DIR, "static_src"),
+    # os.path.join(BASE_DIR, "staticfiles"),
 ]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -145,8 +145,6 @@ STATICFILES_FINDERS = [
 ]
 
 STATICFILES_STORAGE = 'schronisko_krakow.storage.WhiteNoiseStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_src')
-
 
 MEDIA_URL = '/mediafiles/'
 
