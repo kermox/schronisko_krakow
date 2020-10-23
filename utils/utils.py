@@ -1,8 +1,8 @@
 import random
 import string
 
-from django.utils.text import slugify
 from django.db import models
+from django.utils.text import slugify
 
 
 class TimeStampMixin(models.Model):

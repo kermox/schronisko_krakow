@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.signals import pre_save
 
-from utils.utils import unique_slug_generator, TimeStampMixin
+from utils.utils import TimeStampMixin, unique_slug_generator
 
 STATUS_CHOICES = (
     ('draft', 'Szkic'),

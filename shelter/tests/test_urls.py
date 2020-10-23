@@ -1,6 +1,7 @@
 from django.test import SimpleTestCase
-from django.urls import reverse, resolve
-from shelter.views import AnimalListView, AnimalDetail, HomePageView
+from django.urls import resolve, reverse
+
+from shelter.views import AnimalDetail, AnimalListView, HomePageView
 
 
 class TestUrls(SimpleTestCase):

@@ -1,4 +1,5 @@
 from django.test import SimpleTestCase
+
 from shelter.forms import SearchAnimalForm
 
 

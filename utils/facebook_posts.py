@@ -1,7 +1,7 @@
 import requests
 
 from news.models import FacebookPost
-from schronisko_krakow.settings import USER_ACCESS_TOKEN, PAGE_ID
+from schronisko_krakow.settings import PAGE_ID, USER_ACCESS_TOKEN
 
 
 def get_facebook_posts():

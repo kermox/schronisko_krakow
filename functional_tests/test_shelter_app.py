@@ -1,8 +1,10 @@
-from selenium import webdriver
-from shelter.models import Animal
+import time
+
 from django.contrib.staticfiles.testing import LiveServerTestCase
 from django.urls import reverse
-import time
+from selenium import webdriver
+
+from shelter.models import Animal
 
 
 class TestShelterAppPages(LiveServerTestCase):

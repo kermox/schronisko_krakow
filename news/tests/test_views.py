@@ -1,9 +1,7 @@
-from django.test import TestCase, Client
+from django.test import Client, TestCase
 from django.urls import reverse
 
 from news.models import Post, Topic
-
-
 
 
 class TestView(TestCase):

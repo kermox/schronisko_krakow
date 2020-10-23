@@ -1,7 +1,8 @@
-from django.test import TestCase, Client
+from django.test import Client, TestCase
 from django.urls import reverse
-from shelter.models import Animal
+
 from mails.models import EmailAddress
+from shelter.models import Animal
 
 
 class TestView(TestCase):

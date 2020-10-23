@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import (TopicDetailView, NewsDetailView, NewsListView,
+from .views import (NewsDetailView, NewsListView, TopicDetailView,
                     update_facebook_posts)
 
 urlpatterns = [

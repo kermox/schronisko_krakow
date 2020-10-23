@@ -1,4 +1,6 @@
-from whitenoise.storage import CompressedManifestStaticFilesStorage, StaticFilesStorage
+from whitenoise.storage import (CompressedManifestStaticFilesStorage,
+                                StaticFilesStorage)
+
 from .settings import DEBUG
 
 # For tests should inherit StaticFilesStorage otherwise CompressedManifestStaticFilesStorage

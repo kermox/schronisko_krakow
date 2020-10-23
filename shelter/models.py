@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.urls import reverse
 
-from utils.utils import get_image_name, unique_slug_generator, TimeStampMixin
+from utils.utils import TimeStampMixin, get_image_name, unique_slug_generator
 
 
 class PetOwner(models.Model):

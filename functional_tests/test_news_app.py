@@ -1,7 +1,8 @@
-from selenium import webdriver
-from news.models import Post, Topic
 from django.contrib.staticfiles.testing import LiveServerTestCase
 from django.urls import reverse
+from selenium import webdriver
+
+from news.models import Post, Topic
 
 
 class TestNewsAppPages(LiveServerTestCase):
