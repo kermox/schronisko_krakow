@@ -2,27 +2,11 @@ from django import forms
 
 from .models import Animal
 
-SPECIES_CHOICES = [
-    ('dog', 'Pies'),
-    ('cat', 'Kot'),
-]
-
-SIZE_CHOICES = [
-    ('small', 'Mały'),
-    ('medium', 'Średni'),
-    ('big', 'Duży'),
-]
-
 AGE_CHOICES = [
     (0, '0-1'),
     (1, '1-3'),
     (2, '3-5'),
     (3, '5+'),
-]
-
-GENDER_CHOICES = [
-    ('male', 'Samiec'),
-    ('female', 'Samica'),
 ]
 
 
@@ -43,12 +27,12 @@ class SearchAnimalForm(forms.ModelForm):
         required=False,
     )
     species = forms.ChoiceField(
-        choices=SPECIES_CHOICES,
+        choices=Animal.SPECIES_CHOICES,
         required=False,
         widget=forms.RadioSelect()
     )
     size = forms.ChoiceField(
-        choices=SIZE_CHOICES,
+        choices=Animal.SIZE_CHOICES,
         required=False,
         widget=forms.RadioSelect()
     )
@@ -58,7 +42,7 @@ class SearchAnimalForm(forms.ModelForm):
         widget=forms.RadioSelect(),
     )
     gender = forms.ChoiceField(
-        choices=GENDER_CHOICES,
+        choices=Animal.GENDER_CHOICES,
         required=False,
         widget=forms.RadioSelect(),
     )
