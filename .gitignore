@@ -8,13 +8,11 @@ __pycache__/
 *.env
 env/
 
-node_modules/
-
 .idea/
 
 mediafiles/
-static_src/admin
-static_src/css
-static_src/fontawesome_5
-static_src/staticfiles.json
+staticfiles/admin
+staticfiles/css
+staticfiles/fontawesome_5
+staticfiles/staticfiles.json
 
