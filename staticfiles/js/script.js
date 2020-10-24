@@ -4,7 +4,17 @@ AOS.init({
 });
 
 
+// Init stickyTabs module.
+$(document).ready(function () {
+    options = {
+        scrollToTab: $(".nav-pills"),
+    }
+    $('.nav-pills').stickyTabs(options);
+})
+
+
 // Init AnimateNumber module.
+
 $('.count').each(function () {
     $(this).animateNumber(
         {

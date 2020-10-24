@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from mails.models import EmailAddress, EmailTemplate
+from mails.models import EmailTemplate
 from mails.tasks import send_email
 
 

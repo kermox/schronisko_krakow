@@ -50,7 +50,8 @@ class TestNewsAppPages(LiveServerTestCase):
         topic_url = self.live_server_url + reverse('news-topic-detail', args=['topic-name'])
 
         topic_link = self.browser.find_element_by_link_text('topic name'.upper())
-        topic_link_clicked = topic_link.click()
+
+        topic_link.click()
 
         self.assertEquals(self.browser.current_url, topic_url)
 

@@ -35,7 +35,7 @@ class TestShelterAppPages(LiveServerTestCase):
         self.browser.get(self.live_server_url + reverse('animal-list'))
 
         animal_detail = self.live_server_url + reverse('animal-detail', args=['rower'])
-        # causes ConnectionResetError, reason unknown but test is working right
+        # causes ConnectionResetError, reason is unknown but test is working right
         self.browser.find_element_by_class_name('animal-card-link').click()
 
         self.assertEquals(self.browser.current_url, animal_detail)

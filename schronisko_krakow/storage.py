@@ -3,7 +3,7 @@ from whitenoise.storage import (CompressedManifestStaticFilesStorage,
 
 from .settings import DEBUG
 
-# For tests should inherit StaticFilesStorage otherwise CompressedManifestStaticFilesStorage
+# For tests use StaticFilesStorage parent class otherwise CompressedManifestStaticFilesStorage
 if DEBUG:
     class WhiteNoiseStaticFilesStorage(StaticFilesStorage):
         manifest_strict = False

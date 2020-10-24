@@ -76,7 +76,6 @@ class Post(TimeStampMixin, models.Model):
 
 
 class FacebookPost(TimeStampMixin, models.Model):
-
     facebook_post_id = models.CharField(
         max_length=250,
         default=0,

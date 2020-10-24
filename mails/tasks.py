@@ -7,6 +7,7 @@ from schronisko_krakow.settings import EMAIL_HOST_USER
 from .models import EmailTemplate
 
 
+# this function is handled by CELERY service worker
 @shared_task()
 def send_email(address):
     """

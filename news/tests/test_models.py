@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from news.models import FacebookPost, Post, Topic
+from news.models import Post, Topic
 
 
 class TestModels(TestCase):

@@ -5,17 +5,12 @@ import django_on_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = (os.environ.get("DEBUG_VALUE") == 'True')
 
-ALLOWED_HOSTS = ['https://schroniskokrakow.herokuapp.com/', ]
-
-# Application definition
+ALLOWED_HOSTS = ['https://schroniskokrakow.herokuapp.com/', '192.168.0.10']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -67,22 +62,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'schronisko_krakow.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydb',
-        'USER': 'postgres',
-        'PASSWORD': 'Maksi8132781327',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
-
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -98,41 +87,31 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-# variables for work with Facebook Graph API
 
+# Facebook Graph API
 USER_ACCESS_TOKEN = os.environ.get('USER_ACCESS_TOKEN')
-
 PAGE_ID = os.environ.get('PAGE_ID')
 
-# Internationalizatio
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
+# Internationalization
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
+# Email related settings
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = os.environ.get('EMAIL_LOGIN')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_USE_TLS = True
 
-# CELERY
+# Celery settings
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
-
 accept_content = ['json']
-
 task_serializer = 'json'
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -152,6 +131,7 @@ MEDIA_URL = '/mediafiles/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
+# AWS related settings
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
@@ -161,7 +141,6 @@ AWS_S3_FILE_OVERWRITE = False
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-
-
-django_on_heroku.settings(locals())
-
+# HEROKU
+if not DEBUG:
+    django_on_heroku.settings(locals())

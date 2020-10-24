@@ -1,8 +1,7 @@
 from django.test import SimpleTestCase
 from django.urls import resolve, reverse
 
-from news.views import (NewsDetailView, NewsListView, TopicDetailView,
-                        update_facebook_posts)
+from news.views import (NewsDetailView, NewsListView, TopicDetailView)
 
 
 class TestUrls(SimpleTestCase):

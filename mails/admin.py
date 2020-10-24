@@ -21,7 +21,6 @@ class EmailAddressAdmin(admin.ModelAdmin):
     readonly_fields = ['address', ]
     date_hierarchy = 'created_at'
 
-
     def has_change_permission(self, request, obj=None):
         has_permission = super(EmailAddressAdmin, self).has_change_permission(request)
         if has_permission:

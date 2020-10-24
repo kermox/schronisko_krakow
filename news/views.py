@@ -18,11 +18,15 @@ class NewsListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(NewsListView, self).get_context_data(object_list=self.get_queryset())
+
+        # in order to display Topic items at the same page as News items
+        # we need to add Topic objects to context
         context['topic_list'] = Topic.objects.all()
         return context
 
     def get_queryset(self):
         super(NewsListView, self).get_queryset()
+        # chain two querysets and sort them by 'pinned' and 'created_at' fields.
         queryset = sorted(chain(Post.objects.filter(status='published', topic=None),
                                 FacebookPost.objects.filter(status='published')),
                           key=operator.attrgetter('pinned', 'created_at'), reverse=True)

@@ -47,4 +47,5 @@ class TestView(TestCase):
 
         response = self.client.get(self.news_update_facebook_url)
 
+        # if status code == 302 that means it was successfully redirected
         self.assertEquals(response.status_code, 302)

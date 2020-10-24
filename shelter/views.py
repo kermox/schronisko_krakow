@@ -48,8 +48,11 @@ class AnimalListView(FormMixin, ListView):
 
     def get_queryset(self):
         super(AnimalListView, self).get_queryset()
+        # get data from request
         data = self.request.GET.copy()
+        # create new QueryDict
         q = QueryDict(mutable=True)
+        # update QueryDict with key:value from data
         for key, value in data.items():
             if value != '' and key != 'page':
                 if key == 'age':
@@ -65,7 +68,7 @@ class AnimalListView(FormMixin, ListView):
                         q.update({key: value})
                 else:
                     q.update({key: value})
-
+        # filter queryset with new QueryDict
         animal = Animal.objects.filter(**q.dict(), adopted=False).order_by('name')
         return animal
 
@@ -83,6 +86,7 @@ class AnimalDetailPOST(SingleObjectMixin, FormView):
         form = self.get_form()
         if form.is_valid():
             address = form.cleaned_data['address']
+            # if form is valid, send an email
             send_email.delay(address)
             return self.form_valid(form)
         else:
@@ -106,19 +110,24 @@ class AnimalDetailGET(DetailView):
     def get_context_data(self, **kwargs):
         context = super(AnimalDetailGET, self).get_context_data(**kwargs)
         context['form'] = EmailForm()
+        context['animal_detail_page'] = 'active'
         return context
 
 
 class AnimalDetail(View):
 
     def get(self, request, *args, **kwargs):
+        # Thanks to flash message we are preventing user from submitting the same form twice after reloading the page.
         flash_message = request.session.get('flash_message', False)
         if flash_message:
-            del (request.session['flash_message'])
+            del(request.session['flash_message'])
+        # When user requests a page for the first time flash_message is set to False and is passed to AnimalDetailGET
+        # view as extra_content.
         view = AnimalDetailGET.as_view(extra_context={'flash_message': flash_message})
         return view(request, *args, **kwargs, )
 
     def post(self, request, *args, **kwargs):
+        # When user send a POST request, the flash_message is set to True.
         request.session['flash_message'] = True
         view = AnimalDetailPOST.as_view()
         return view(request, *args, **kwargs)
