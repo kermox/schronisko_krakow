@@ -1,2 +1,2 @@
 web: gunicorn schronisko_krakow.wsgi
-worker: celery worker --app=tasks.app
+worker: celery -A mails.tasks worker -B --loglevel=info
