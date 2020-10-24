@@ -2,25 +2,25 @@
 {% load fontawesome_5 %}
 {% load static %}
 {% block content %}
-    <header class="header-img welcome-header w-100 d-flex flex-column align-items-center justify-content-end"
+    <header class="welcome-header w-100 d-flex flex-column align-items-center justify-content-end"
             style="background-image: url('{% static 'img/welcome-background.jpg' %}');  background-repeat: no-repeat;
                     background-position: bottom;
                     background-attachment: fixed;
-                    background-size: cover; height: 70vh;">
+                    background-size: cover; height: 80vh;">
         <div class="row w-100 h-100 pb-3 pb-lg-0 d-flex flex-column justify-content-center align-items-start">
             <div class="container-md container-fluid">
                 <div class="col mt-5">
-                    <h1 class="text-center h-like-lg text-md-left mb-3">Potrzebuję Cię!</h1>
-                    <h5 class="text-center h-like-small text-md-left p-0">A Ty zapewnie mnie też.</h5>
+                    <h1 class="text-left h-like-lg  mb-3">Potrzebuję Cię!</h1>
+                    <h5 class="text-left h-like-small  p-0">A Ty zapewnie mnie też.</h5>
 
-                    <div class="d-flex justify-content-center justify-content-md-start"><a href="#"
+                    <div class="d-flex justify-content-start"><a href="{% url 'animal-list' %}"
                                                                                            class="action-btn btn btn-outline-secondary btn-lg mt-3 px-5">Adoptuj</a>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <section class="numbers bg-primary py-5">
+    <section class="numbers bg-primary py-2 py-lg-5">
         <div class="container-fluid container-md">
             <div class="row w-100 m-0 h-25 py-4 d-flex justify-content-center">
                 <div class="col-12 col-lg-6 w-100 h-100 rounded d-flex justify-content-center align-items-center">
@@ -208,7 +208,7 @@
     </section>
     <section class="partners py-5">
         <div class="container d-flex flex-column justify-content-center align-items-center">
-            <h4 class="h-like-lg">Nasi Sponsorzy</h4>
+            <h4 class="h-like-lg text-center mb-4 mb-md-3">Nasi Sponsorzy</h4>
             <p class="partners-p-like text-center">Firmy i organizacje dzięki którym jesteśmy w stanie kontynuować naszą
                 misję.</p>
             <div class="partners-box py-5 row d-flex justify-content-center">
