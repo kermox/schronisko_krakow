@@ -10,7 +10,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = (os.environ.get("DEBUG_VALUE") == 'True')
 
-ALLOWED_HOSTS = ['https://schroniskokrakow.herokuapp.com/', '192.168.0.10']
+ALLOWED_HOSTS = ['https://schroniskokrakow.herokuapp.com', '192.168.0.10']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
