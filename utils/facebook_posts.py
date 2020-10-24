@@ -5,6 +5,10 @@ from schronisko_krakow.settings import PAGE_ID, USER_ACCESS_TOKEN
 
 
 def get_facebook_posts():
+    """
+    Makes a call to Facebook Graph API, checks if the post's id is already in database.
+    If not, saves the post credentials to database.
+    """
     parameters = {'access_token': USER_ACCESS_TOKEN}
     page_url = f'https://graph.facebook.com/{PAGE_ID}/posts?fields=permalink_url'
     data = requests.get(page_url, params=parameters)

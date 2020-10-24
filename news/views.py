@@ -57,6 +57,10 @@ class TopicDetailView(DetailView):
 
 
 def update_facebook_posts(request):
+    """
+    This view is responsible for calling get_facebook_post function to make an API call to Facebook Graph API and
+    redirect administrator to FacebookPosts changelist page.
+    """
     if request.method == "POST":
         from utils.facebook_posts import get_facebook_posts
         get_facebook_posts()

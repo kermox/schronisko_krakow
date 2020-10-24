@@ -11,6 +11,9 @@ class PetOwnerAdmin(admin.ModelAdmin):
     search_fields = ['first_name', 'second_name', 'email', 'phone_number']
 
     def get_animals(self, instance):
+        """
+        Returns a list of Animal's names adopted by PetOwner.
+        """
         return [i.name.upper() for i in instance.animal_set.all()]
     get_animals.short_description = 'adaptowane zwierzęta'
 
@@ -24,6 +27,9 @@ class AnimalGalleryAdmin(admin.TabularInline):
 
 
 class AnimalAgeFilter(admin.SimpleListFilter):
+    """
+    Categorize age into 4 filters.
+    """
     title = _('przybliżony wiek')
     parameter_name = 'age'
 

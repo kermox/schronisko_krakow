@@ -47,6 +47,9 @@ class AnimalListView(FormMixin, ListView):
     }
 
     def get_queryset(self):
+        """
+        Returns a filtered queryset after submitting a form with GET request.
+        """
         super(AnimalListView, self).get_queryset()
         # get data from request
         data = self.request.GET.copy()
@@ -74,6 +77,9 @@ class AnimalListView(FormMixin, ListView):
 
 
 class AnimalDetailPOST(SingleObjectMixin, FormView):
+    """
+    This view is called when user submits an email form.
+    """
     template_name = 'shelter/animal-detail.html'
     form_class = EmailForm
     model = Animal
@@ -103,9 +109,6 @@ class AnimalDetailGET(DetailView):
     model = Animal
     template_name = 'shelter/animal-detail.html'
     context_object_name = 'animal'
-    extra_context = {
-        'animal_detail_page': 'active',
-    }
 
     def get_context_data(self, **kwargs):
         context = super(AnimalDetailGET, self).get_context_data(**kwargs)
@@ -115,7 +118,9 @@ class AnimalDetailGET(DetailView):
 
 
 class AnimalDetail(View):
-
+    """
+    Calls an appropriate view for POST and GET request.
+    """
     def get(self, request, *args, **kwargs):
         # Thanks to flash message we are preventing user from submitting the same form twice after reloading the page.
         flash_message = request.session.get('flash_message', False)
