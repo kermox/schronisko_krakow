@@ -13,13 +13,13 @@
             {% endif %}
         </video>
     </header>
-    <section class="animal-details">
+    <section class="animal-details position-relative">
         <div class="header-text-video d-flex w-100 justify-content-center">
-            <h1 class="h-like-xlg mt-0 px-3 py-3">{{ animal.name|upper }}</h1>
+            <h1 class="h-like-xlg my-0 px-3 py-3">{{ animal.name|upper }}</h1>
         </div>
-        <div class="container">
+        <div class="container mt-0">
             <div class="description">
-                <div class="card mb-4 mt-5 w-100">
+                <div class="card pb-5 w-100">
                     <div class="row no-gutters">
                         <div class="col-md-4 d-flex align-items-center">
                             <img class="card-img img-fluid" src="{{ animal.photo.url }}"
