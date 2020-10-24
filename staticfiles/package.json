@@ -20,6 +20,7 @@
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "bootstrap": "^4.5.0",
+    "detect.js": "^2.2.3",
     "jquery": "^3.5.1",
     "micromodal": "^0.4.6",
     "node-sass": "^4.14.1",
