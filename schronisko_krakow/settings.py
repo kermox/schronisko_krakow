@@ -65,9 +65,9 @@ WSGI_APPLICATION = 'schronisko_krakow.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydb',
-        'USER': 'posgres',
-        'PASSWORD': 'Maksi8132781327',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -142,5 +142,5 @@ AWS_S3_FILE_OVERWRITE = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # HEROKU
-if not DEBUG:
-    django_on_heroku.settings(locals())
+
+django_on_heroku.settings(locals())
