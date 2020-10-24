@@ -110,15 +110,6 @@ openNavigation.click(function () {
 
 
 // Facebook embed responsive handling
-// Add events to listen to screen width change
-if (matchMedia) {
-    const mq = window.matchMedia("(min-width: 600px)");
-    const mq2 = window.matchMedia("(min-width: 501px")
-    mq.addEventListener("change", WidthChange);
-    mq2.addEventListener("change", WidthChange);
-    WidthChange(mq, mq2);
-}
-
 // Set attributes depending on media query change (needs page reload)
 function WidthChange(mq, mq2) {
     if (mq.matches) {
@@ -129,4 +120,14 @@ function WidthChange(mq, mq2) {
         $('.fb-post').attr({'data-width': "340", 'style': 'overflow-x: scroll;'})
     }
 }
+
+// Add events to listen to screen width change
+if (matchMedia) {
+    const mq = window.matchMedia("(min-width: 600px)");
+    const mq2 = window.matchMedia("(min-width: 501px")
+    mq.addEventListener("change", WidthChange);
+    mq2.addEventListener("change", WidthChange);
+    WidthChange(mq, mq2);
+}
+
 
