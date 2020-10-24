@@ -24,7 +24,6 @@ header.header-video {
 }
 
 header.header-img {
-  position: relative;
   height: 50vh;
   background-size: cover;
   background-repeat: no-repeat;
@@ -32,33 +31,25 @@ header.header-img {
 
 }
 
-.header-text {
-  position: absolute;
+.header-text h1 {
   z-index: 2;
-  bottom: 0;
+  color: $secondary;
+  background-color: $bg-dark;
   -ms-transform: translateY(50%);
   -moz-transform: translateY(50%);
   -webkit-transform: translateY(50%);
   transform: translateY(50%);
+}
+
+.header-text-video {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  transform: translateY(-50%);
 
   h1 {
     color: $secondary;
     background-color: $bg-dark;
-  }
-
-  &-video {
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-
-    h1 {
-      color: $secondary;
-      background-color: $bg-dark;
-    }
   }
 }
 
@@ -90,10 +81,10 @@ video {
 
 .h-like-sm {
   @include media-breakpoint-down(md) {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   @supports (font-size: clamp(2rem, 3vh, 2.5rem)) {
-    font-size: clamp(1.8rem, 3vh, 2.5rem);
+    font-size: clamp(2rem, 3vh, 2.5rem);
   }
 }
 
@@ -109,16 +100,16 @@ video {
 
 .h-like-lg {
   @include media-breakpoint-down(md) {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
-  @supports (font-size: clamp(2.5rem, 3vh, 4rem)) {
+  @supports (font-size: clamp(3rem, 3vh, 4rem)) {
     font-size: clamp(3rem, 3.5vh, 4.5rem);
   }
 }
 
 .h-like-xlg {
   @include media-breakpoint-down(sm) {
-    font-size: 20px;
+    font-size: 3.5rem;
   }
   @supports (font-size: clamp(4rem, 10vw, 5rem)) {
     font-size: clamp(4rem, 10vw, 5rem);

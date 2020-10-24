@@ -15,14 +15,11 @@ $('.count').each(function () {
     )
 });
 
-
-// Init stickyTabs module.
-$(document).ready(function () {
-    options = {
-        scrollToTab: $(".nav-pills"),
-    }
-    $('.nav-pills').stickyTabs(options);
-})
+// Detect the browser and change background image attachment if its Mobile IOS
+let ua = detect.parse(navigator.userAgent)
+if(ua.browser.family === 'Mobile Safari'){
+    $('.welcome-header').css('background-attachment', 'inherit')
+}
 
 
 // When redirecting to tabs from home page on small and medium screen size devices, close the navigation menu
