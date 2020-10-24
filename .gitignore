@@ -16,5 +16,5 @@ staticfiles/css
 staticfiles/fontawesome_5
 staticfiles/staticfiles.json
 staticfiles/node_modules
-static_compiled/
+static_compiled
 
