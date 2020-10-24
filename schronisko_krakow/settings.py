@@ -10,7 +10,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = (os.environ.get("DEBUG_VALUE") == 'True')
 
-ALLOWED_HOSTS = ['https://schroniskokrakow.herokuapp.com/', '192.168.0.10']
+ALLOWED_HOSTS = ['schroniskokrakow.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -142,5 +142,5 @@ AWS_S3_FILE_OVERWRITE = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # HEROKU
-if not DEBUG:
-    django_on_heroku.settings(locals())
+
+django_on_heroku.settings(locals())
