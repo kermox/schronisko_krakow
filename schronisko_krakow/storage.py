@@ -1,12 +1,6 @@
-from whitenoise.storage import (CompressedManifestStaticFilesStorage,
-                                StaticFilesStorage)
+from whitenoise.storage import StaticFilesStorage
 
-from .settings import DEBUG
 
-# For tests use StaticFilesStorage parent class otherwise CompressedManifestStaticFilesStorage
-if DEBUG:
-    class WhiteNoiseStaticFilesStorage(StaticFilesStorage):
-        manifest_strict = False
-else:
-    class WhiteNoiseStaticFilesStorage(CompressedManifestStaticFilesStorage):
-        manifest_strict = False
+class WhiteNoiseStaticFilesStorage(StaticFilesStorage):
+    # do no throw an error when static file is not found
+    manifest_strict = False
