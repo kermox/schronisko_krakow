@@ -51,17 +51,21 @@
         opacity: 1;
         border: none;
 
-        .card-title {
+        &-img-top{
+          min-height: 260px;
+        }
+
+        &-title {
           background-color: $secondary;
         }
 
-        .card-body {
+        &-body {
           position: relative;
           height: 16em;
           background-color: $primary;
           overflow: hidden;
 
-          .card-body-overlay {
+          &-overlay {
             position: absolute;
             top: 0;
             left: 0;
@@ -73,7 +77,7 @@
           }
         }
 
-        .card-btn {
+        &btn {
           transition: background-color 0.1s ease-in-out;
         }
       }

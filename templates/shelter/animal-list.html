@@ -33,8 +33,8 @@
                             <a href="{% url 'animal-detail' i.slug %}"
                                class="animal-card-link text-decoration-none">
                                 <div class="card d-flex align-items-center">
-                                    <img class="card-img-top" src="{{ i.photo.url }}"
-                                         alt="Fotografia zwierzaka">
+                                    <div class="card-img-top" style="background-image: url('{{i.photo.url}}'); background-repeat: no-repeat;
+                                            background-position: center; background-size: cover;"></div>
                                     <div class="card-body w-100">
                                         <div class="card-body-overlay"></div>
                                         <div class="card-header-container d-flex justify-content-start">
