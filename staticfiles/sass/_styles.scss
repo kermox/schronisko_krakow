@@ -2,6 +2,14 @@
   font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
 }
+.not-found {
+  min-height: 300px;
+
+  &-text {
+    color: $secondary;
+    background-color: $bg-dark;
+  }
+}
 
 header.header-video {
   position: relative;

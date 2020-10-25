@@ -58,10 +58,10 @@
                     {% endfor %}
                 </div>
             {% else %}
-                <div class="w-100 empty-topic d-flex justify-content-center align-items-end mb-5"
+                <div class="w-100 not-found d-flex justify-content-center align-items-end mb-5"
                      style="background-image: url('{% static "img/empty-category-dog.jpg" %}');
                              background-position: center; background-size: contain; background-repeat: no-repeat">
-                    <h3 class="empty-topic-text text-center py-2 px-2 d-inline">Nic nie znalazłem..</h3>
+                    <h3 class="not-found-text text-center py-2 px-2 d-inline">Nic nie znalazłem..</h3>
                 </div>
             {% endif %}
         </div>

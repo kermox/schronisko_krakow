@@ -31,9 +31,9 @@
                 </div>
             {% endfor %}
         {% else %}
-            <div class="w-100 empty-topic" style="background-image: url('{% static "img/empty-category-dog.jpg" %}');
+            <div class="w-100 not-found" style="background-image: url('{% static "img/empty-category-dog.jpg" %}');
                     background-position: center; background-size: 70%; background-repeat: no-repeat"></div>
-            <h3 class="empty-topic-text py-2 px-2">Ten wątek jest pusty..</h3>
+            <h3 class="not-found-text py-2 px-2">Ten wątek jest pusty..</h3>
         {% endif %}
     </article>
 {% endblock %}
