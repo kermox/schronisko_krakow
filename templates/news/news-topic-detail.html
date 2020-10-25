@@ -9,7 +9,7 @@
     {% endif %}
 {% endblock %}
 {% block article %}
-    <article class="topic-article d-flex flex-column align-items-center col-12 col-lg-9 py-5 px-1 px-sm-4 px-md-5">
+    <article class="topic-article d-flex flex-column align-items-center col-12 col-lg-8 py-5 px-1 px-sm-4 px-md-5">
         {% if topic_post_list %}
             {% for i in topic_post_list %}
                 <div class="card {% if i.pinned %} card-pinned {% endif %} w-100 mb-5">
