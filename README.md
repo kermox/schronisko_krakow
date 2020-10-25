@@ -3,24 +3,25 @@
 ## About project
 The idea behind  [schronisko-krakow](https://schroniskokrakow.herokuapp.com/) website is to prove  my programming skills by doing a kind of *commercial* project from scretch.
 At the same time I am willing to support a non-profit organizations such as [Krakowskie Schronisko dla Bezdomnych Zwierzat](http://www.schronisko.krakow.pl/). Im sure that better presentation in the web  will help them to better achieve their mission.<br>
-![Alt Text](https://media.giphy.com/media/l3mZ7fY412m0wCQbS/giphy.gif)
+
+![Alt Text](https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif)
 
 ## Technology stack
-####Backend:
+#### Backend:
 For the backend I used **python3** together with its framework **Django**.
 **Celery** and **Redis** handle the asynchronous tasks such as sending an email. Python's **requests** library is used to make calls to **Facebook Grapgh API**.
 Database - **PostgreSQL** 
 
-####Frond-end:
+#### Frond-end:
 The front-end part of application was written with **HTML5** for django templates, **SASS** and **Bootstrap4** for stylesheets and mixed
 **Jquery** library with **Vanilla Javascript**.
 
-####Tests:
+#### Tests:
 Some simple unit tests are made with **django.test.TestCase** class.
 Functional tests are made with **Selenium**.
 
 
-####Deployment:
+#### Deployment:
 The project was deployed on **Heroku** using hobby-dev subscription.
 Mediafiles are loaded and served up via an  **AWS S3** buckets. Staticfiles are server with fantastic **Whitenoise**.
 
