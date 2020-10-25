@@ -4,7 +4,9 @@ from whitenoise.storage import (CompressedManifestStaticFilesStorage,
 from .settings import DEBUG
 
 # For tests use StaticFilesStorage parent class otherwise CompressedManifestStaticFilesStorage
-
-
-class WhiteNoiseStaticFilesStorage(StaticFilesStorage):
-    manifest_strict = False
+if DEBUG:
+    class WhiteNoiseStaticFilesStorage(StaticFilesStorage):
+        manifest_strict = False
+else:
+    class WhiteNoiseStaticFilesStorage(CompressedManifestStaticFilesStorage):
+        manifest_strict = False
