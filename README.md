@@ -2,71 +2,72 @@
 
 ## About project
 The idea behind  [schronisko-krakow](https://schroniskokrakow.herokuapp.com/) website is to prove  my programming skills by doing a kind of *commercial* project from scretch.
-At the same time I am willing to support a non-profit organizations such as [Krakowskie Schronisko dla Bezdomnych Zwierzat](http://www.schronisko.krakow.pl/). Im sure that better presentation in the web  will help them to better achieve their mission.
+At the same time I am willing to support a non-profit organizations such as [Krakowskie Schronisko dla Bezdomnych Zwierzat](http://www.schronisko.krakow.pl/). Im sure that better presentation in the web  will help them to better achieve their mission.<br>
+![Alt Text](https://media.giphy.com/media/l3mZ7fY412m0wCQbS/giphy.gif)
 
 ## Technology stack
-#####Backend:
+####Backend:
 For the backend I used **python3** together with its framework **Django**.
 **Celery** and **Redis** handle the asynchronous tasks such as sending an email. Python's **requests** library is used to make calls to **Facebook Grapgh API**.
 Database - **PostgreSQL** 
 
-#####Frond-end:
+####Frond-end:
 The front-end part of application was written with **HTML5** for django templates, **SASS** and **Bootstrap4** for stylesheets and mixed
 **Jquery** library with **Vanilla Javascript**.
 
-#####Tests:
+####Tests:
 Some simple unit tests are made with **django.test.TestCase** class.
 Functional tests are made with **Selenium**.
 
 
-#####Deployment:
+####Deployment:
 The project was deployed on **Heroku** using hobby-dev subscription.
 Mediafiles are loaded and served up via an  **AWS S3** buckets. Staticfiles are server with fantastic **Whitenoise**.
 
 ## Instalation
-* Clone the repo:<br> 
+Clone the repo:
 ```
 git clone https://github.com/kermox/schronisko_krakow.git
 ```
-* Go to project directory where `manage.py` is located:
+Go to project directory where `manage.py` is located:
 ```
 cd schronisko_krakow
 ```
-* Create a virtual environment:
+Create a virtual environment:
 <br>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;On macOS and Linux:
+* On macOS and Linux:
 ```
 python3 -m venv env
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On Windows:
+* On Windows:
 ```
 py -m venv env
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And activate it:
+* activate virtual env:
 ```
 source env/bin/activate
 ```
-* Install python dependencies:
+Install python dependencies:
 ```
 pip install -r requirements.txt
 ```
-* Install node dependencies: 
+Install node dependencies: 
 ```
 npm install
 ```
-* run server:
+Run server:
 ```
 python manage.py runserver
 ```
-* activate css compiler:
+Activate css compiler:
 ```
 cd staticfiles
 
 npm run compile:css:watch
 ```
-* activate celery worker:
+Activate celery worker:
 ```
 celery -A schronisko_krakow worker -l INFO
 ```
