@@ -1,6 +1,7 @@
 import os
 
 import django_on_heroku
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -63,14 +64,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'schronisko_krakow.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
+     'default': dj_database_url.config(
+        default=os.environ['DATABASE_URL']
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
