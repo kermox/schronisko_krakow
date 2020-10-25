@@ -35,6 +35,9 @@
       &-pinned {
         border: 2px solid $danger !important;
       }
+      &-text {
+        white-space: pre-line;
+      }
     }
 
     .thumbtack {
