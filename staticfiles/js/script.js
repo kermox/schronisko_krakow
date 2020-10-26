@@ -107,28 +107,3 @@ openNavigation.click(function () {
     $('body').toggleClass("overflow-hidden")
     $('nav').toggleClass('bg-dark')
 })
-
-
-// Facebook embed responsive handling
-
-// Add events to listen to screen width change
-if (matchMedia) {
-const mq = window.matchMedia("(min-width: 600px)");
-const mq2 = window.matchMedia("(min-width: 501px")
-mq.addEventListener("change", WidthChange);
-mq2.addEventListener("change", WidthChange);
-WidthChange(mq, mq2);
-}
-
-// Set attributes depending on media query change (needs page reload)
-function WidthChange(mq, mq2) {
-    if (mq.matches) {
-        $('.fb-post').attr('data-width', "550")
-    } else if (mq2.matches) {
-        $('.fb-post').attr('data-width', "450")
-    } else {
-        $('.fb-post').attr('data-width', "340")
-    }
-}
-
-
