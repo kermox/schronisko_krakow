@@ -27,7 +27,7 @@ $('.count').each(function () {
 
 // Detect the browser and change background image attachment if its Mobile IOS
 let ua = detect.parse(navigator.userAgent)
-if(ua.browser.family === 'Mobile Safari'){
+if (ua.browser.family === 'Mobile Safari') {
     $('.welcome-header').css('background-attachment', 'inherit')
 }
 
@@ -113,11 +113,11 @@ openNavigation.click(function () {
 
 // Add events to listen to screen width change
 if (matchMedia) {
-    const mq = window.matchMedia("(min-width: 600px)");
-    const mq2 = window.matchMedia("(min-width: 501px")
-    mq.addEventListener("change", WidthChange);
-    mq2.addEventListener("change", WidthChange);
-    WidthChange(mq, mq2);
+const mq = window.matchMedia("(min-width: 600px)");
+const mq2 = window.matchMedia("(min-width: 501px")
+mq.addEventListener("change", WidthChange);
+mq2.addEventListener("change", WidthChange);
+WidthChange(mq, mq2);
 }
 
 // Set attributes depending on media query change (needs page reload)
@@ -127,7 +127,7 @@ function WidthChange(mq, mq2) {
     } else if (mq2.matches) {
         $('.fb-post').attr('data-width', "450")
     } else {
-        $('.fb-post').attr({'data-width': "340", 'style': 'overflow-x: scroll;'})
+        $('.fb-post').attr('data-width', "340")
     }
 }
 
